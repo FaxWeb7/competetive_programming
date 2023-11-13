@@ -9,8 +9,8 @@ def find_meeting_point(a, b, x, y):
 
     while left <= right:
         mid = (left + right) // 2
-        tom_reward = mid * x
-        gek_reward = (a + b - mid) * y
+        tom_reward = mid * x if mid <= a else a*x + (mid-a)*y
+        gek_reward = (a + b - mid) * y if mid >= a else b*y + (a-mid)*x
         diff = abs(tom_reward - gek_reward)
         if diff <= min_diff:
             min_diff = diff
