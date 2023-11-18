@@ -1,13 +1,25 @@
-from math import sqrt
+s = input()
 
-def fib_mod(n, m):
-    f =  ((1+sqrt(5))**n - (1-sqrt(5))**n)/2**n*sqrt(5)
-    return f
+filter_s = []
+for el in s:
+    if el not in filter_s:
+        filter_s.append(el)
 
-def main():
-    n, m = map(int, input().split())
-    print(fib_mod(n, m))
+decode_table = {}
+code_symbol = "0"
+for i in range(len(filter_s)):
+    if i >= len(filter_s) - 2:
+        decode_table[filter_s[i]] = code_symbol
+        code_symbol = code_symbol[:-1] + "1"
+    else:
+        decode_table[filter_s[i]] = code_symbol
+        code_symbol = "1" + code_symbol
 
+result = ''
+for el in s:
+    result += decode_table[el]
 
-if __name__ == "__main__":
-    main()
+print(len(filter_s), len(result))
+for k, v in decode_table.items():
+    print(k + ": " + v)
+print(result)
