@@ -46,7 +46,11 @@ save_btn.clicked.connect(save_btn_clicked)
 # users table
 table = QTableWidget(5, 8, window)
 table.setGeometry(0, 50, 1000, 400)
-table.setHorizontalHeaderLabels(['Фамилия', 'Имя', 'Отчество', 'Результативность\nза месяц(%)', 'Оклад', 'Месячная\nзарплата\nпри результате 100%', 'Размер премии при\nпревышении результата\nна 100%', 'Идеальная зарплата'])
+table.setHorizontalHeaderLabels(['Фамилия', 'Имя', 'Отчество',
+                                'Результативность\nза месяц(%)', 'Оклад',
+                                'Месячная\nзарплата\nпри результате 100%', 
+                                'Размер премии при\nпревышении результата\nна 100%', 
+                                'Идеальная зарплата'])
 
 # add user button
 def add_btn_clicked(event):

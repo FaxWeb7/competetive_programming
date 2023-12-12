@@ -2,7 +2,7 @@ def calculate_salary(effectiveness, min_salary, plan_salary, bonus, min_salary_p
     salary = 0
     if 0 <= effectiveness <= min_salary_point:
         salary = min_salary
-    elif 50 < effectiveness <= 100:
+    elif min_salary_point < effectiveness <= 100:
         salary = plan_salary * (effectiveness / 100)
     elif 100 < effectiveness <= max_salary_point:
         salary = plan_salary + (bonus*2) * ((effectiveness / 100) - 1)
@@ -10,6 +10,9 @@ def calculate_salary(effectiveness, min_salary, plan_salary, bonus, min_salary_p
         salary = max_salary_point / 100 * plan_salary
 
     return salary
+
+
+
 
 # effectiveness = int(input('Введите результативность работы сотрудника за месяц (в процентах): '))
 # min_salary = int(input('Введите оклад (гарантированная часть ЗП): '))
