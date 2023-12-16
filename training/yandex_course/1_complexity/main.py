@@ -1,3 +1,4 @@
+# https://www.youtube.com/watch?v=QLhqYNsPIVo&list=PL6Wui14DvQPySdPv5NUqV3i8sDbHkCKC5
 # поиск наиболее повторяемого символа строки за O(n)
 s = input()
 
