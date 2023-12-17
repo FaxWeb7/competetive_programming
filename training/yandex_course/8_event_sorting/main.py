@@ -63,16 +63,66 @@ def boss_counters(n, tin, tout, m, tboss):
 def is_parking_full(n, m, tin, tout, from_place, to_place):
     events = []
     for i in range(m):
-        events.append((tin[i], 'arrive', from_place[i], to_place[i]))
-        events.append((tout[i], 'leave', from_place[i], to_place[i]))
+        events.append((tin[i], 'arrive', to_place[i] - from_place[i] + 1))
+        events.append((tout[i], 'leave', to_place[i] - from_place[i] + 1))
     events.sort()
 
     ocup_places = 0
     for event in events:
-        if event[1] == 'arrive':
-            ocup_places += (event[3] - event[2]) + 1
         if event[1] == 'leave':
-            ocup_places -= (event[3] - event[2]) + 1
-        if ocup_places >= n:
+            ocup_places -= event[2]
+        if event[1] == 'arrive':
+            ocup_places += event[2]
+        if ocup_places == n:
             return True
     return False
+
+
+# Задача на нахождение минимального кол-ва машин на парковке в тот момент, когда парковка полностью забита
+def min_cars_full_parking(n, m, tin, tout, from_place, to_place):
+    events = []
+    for i in range(m):
+        events.append((tin[i], 'arrive', to_place[i] - from_place[i] + 1))
+        events.append((tout[i], 'leave', to_place[i] - from_place[i] + 1))
+    events.sort()
+
+    now_cars = 0
+    min_cars = m + 1
+    ocup_places = 0
+    for event in events:
+        if event[1] == 'leave':
+            ocup_places -= event[2]
+            now_cars -= 1
+        if event[1] == 'arrive':
+            ocup_places += event[2]
+            now_cars += 1
+        if ocup_places == n:
+            min_cars = min(min_cars, now_cars)
+    return min_cars
+
+
+# Задача на нахождение номеров машин на парковке в тот момент, когда парковка полностью забита
+def car_numbers_full_parking(n, m, tin, tout, from_place, to_place):
+    events = []
+    for i in range(m):
+        events.append((tin[0], 'arrive', to_place[i] - from_place[i] + 1))
+        events.append((tout[0], 'leave', to_place[i] - from_place[i] + 1))
+    unsorted_events = events
+    events.sort()
+
+    cars_numbers = []
+    min_cars = m+1
+    now_cars = 0
+    ocup_places = 0
+    for i in range(2*m):
+        if events[i][1] == 'leave':
+            ocup_places -= 1
+            now_cars -= events[i][2]
+            cars_numbers.remove(unsorted_events.index(events[i]) + 1)
+        if events[i][1] == 'arrive':
+            ocup_places += 1
+            now_cars += events[i][2]
+            cars_numbers.append(unsorted_events.index(events[i]) + 1)
+        if ocup_places == n:
+            min_cars = min(min_cars, now_cars)
+    return (min_cars, cars_numbers)
