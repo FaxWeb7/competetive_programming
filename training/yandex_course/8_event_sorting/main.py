@@ -126,3 +126,6 @@ def car_numbers_full_parking(n, m, tin, tout, from_place, to_place):
         if ocup_places == n:
             min_cars = min(min_cars, now_cars)
     return (min_cars, cars_numbers)
+
+
+    
