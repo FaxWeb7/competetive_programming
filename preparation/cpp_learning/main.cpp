@@ -682,9 +682,144 @@
 
 
 //------------ ITERATE OVER IN ARRAY ------------//
+// #include <iostream>
+
+// int main(){ 
+//     std::string students[] = {"SpongeBob", "Patrick", "Squidward"};
+//     for (int i = 0; i < sizeof(students)/sizeof(students[0]); i++){
+//         std::cout << students[i] << std::endl;
+//     }
+
+//     return 0;
+// }
+
+
+//------------ FOREACH LOOP ------------//
+// #include <iostream>
+
+// int main(){
+//     // foreach loop = loop that eases the traversal over an iterable data set (less flexibility)
+
+//     std::string students[] = {"SpongeBob", "Patrick", "Squidward"};
+//     for (std::string student : students){
+//         std::cout << student << std::endl;
+//     }
+
+//     return 0;
+// }
+
+
+//------------ PASS ARRAY TO A FUNCTION ------------//
+// #include <iostream>
+
+// double getTotal(double prices[], int size);
+
+// int main(){
+//     double prices[] = {49.99, 75, 9.99};
+//     int size = sizeof(prices)/sizeof(prices[0]);
+//     double total = getTotal(prices, size);
+//     std::cout << total << '$';
+
+//     return 0;
+// }
+
+// double getTotal(double prices[], int size){
+//     double total;
+//     for (int i = 0; i < size; i++){
+//         total += prices[i];
+//     }
+//     return total;
+// }
+
+
+//------------ SEARCH AN ARRAY FOR AN ELEMENT ------------//
+// #include <iostream>
+
+// int searchElement(int array[], int size, int number);
+
+// int main(){
+//     int numbers[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//     int size = sizeof(numbers)/sizeof(numbers[0]);
+//     int myNum;
+//     int index;
+
+//     std::cout << "Enter a number to search for: ";
+//     std::cin >> myNum;
+//     index = searchElement(numbers, size, myNum);
+//     if (index != -1){
+//         std::cout << "Your number is on " << index << " index";
+//     }
+//     else {
+//         std::cout << "There isn't this number in array :(";
+//     }
+
+//     return 0;
+// }
+
+// int searchElement(int array[], int size, int number){
+//     for (int i = 0; i < size; i++){
+//         if (array[i] == number){
+//             return i;
+//         }
+//     }
+//     return -1;
+// }
+
+
+//------------ SORT AN ARRAY ------------//
+// #include <iostream>
+
+// void sort(int array[], int size);
+
+// int main(){
+//     int numbers[] = {10, 1, 9, 2, 8, 3, 7, 4, 6, 5};
+//     int size = sizeof(numbers)/sizeof(numbers[0]);
+
+//     sort(numbers, size);
+//     for (int i = 0; i < size; i++){
+//         std::cout << numbers[i] << " ";
+//     }
+
+//     return 0;
+// }
+
+// void sort(int array[], int size){
+//     int temp;
+//     for (int i = 0; i < size-1; i++){
+//         for (int j = 0; j < size-i-1; j++){
+//             if (array[j] > array[j+1]){
+//                 temp = array[j];
+//                 array[j] = array[j+1];
+//                 array[j+1] = temp;
+//             }
+//         }
+//     }
+// }
+
+
+//------------ FILL FUNCTION ------------//
+// #include <iostream>
+
+// int main(){
+//     // fill() = fills a range of elements with a specified value 
+//     //          fill(begin, end, value)
+
+//     std::string foods[100];
+//     fill(foods, foods+50, "pizza");
+//     fill(foods+50, foods+100, "hamburgers");
+
+//     for (std::string food : foods){
+//         std::cout << food << std::endl;
+//     }
+
+//     return 0;
+// }
+
+
+//------------ FILL AN ARRAY WITH USER INPUT ------------//
 #include <iostream>
 
-int main(){ 
+int main(){
     
 
     return 0;
