@@ -817,10 +817,257 @@
 
 
 //------------ FILL AN ARRAY WITH USER INPUT ------------//
+// #include <iostream>
+
+// int main(){
+//     std::string foods[5];
+//     int size = sizeof(foods)/sizeof(foods[0]);
+//     std::string temp;
+
+//     for (int i = 0; i < size; i++){
+//         std::cout << "Enter a food you like or 'q' to exit: #" << i+1 << ": ";
+//         std::getline(std::cin, temp);
+//         if (temp == "q"){
+//             break;
+//         }
+//         foods[i] = temp;
+//     }
+
+//     std::cout << "You like the following food:\n";
+//     for (int i = 0; !foods[i].empty(); i++){
+//         std::cout << foods[i] << std::endl;
+//     }
+
+//     return 0;
+// }
+
+
+//------------ MULTIDIMENSIONAL ARRAY ------------//
+// #include <iostream>
+
+// int main(){
+//     std::string cars[2][3] = {{"Mustang", "Escape", "F-150"}, {"Corvette", "Equinox", "Silverado"}};
+//     int rows = sizeof(cars)/sizeof(cars[0]);
+//     int cols = sizeof(cars[0])/sizeof(cars[0][0]);
+
+//     for (int i = 0; i < rows; i++){
+//         for (int j = 0; j < cols; j++){
+//             std::cout << cars[i][j] << ' ';
+//         }
+//         std::cout << std::endl;
+//     }
+
+//     return 0;
+// }
+
+
+//------------ QUIZ GAME ------------//
+// #include <iostream>
+// #include <cctype>
+// using namespace std;
+
+// int main(){
+//     string questions[4][5] = {{"1. What year was C++ created?:", "A. 1969", "B. 1975", "C. 1985", "D. 1989"},
+// 								{"2. Who invented C++?:", "A. Guido van Rossum", "B. Bjarne Stroustrup", "C. John Carmack", "D. Mark Zuckerburg"},
+// 								{"3. What is the predecessor of C++?:", "A. C", "B. C+", "C. C--", "D. B++"},
+// 								{"4. Is the Earth flat?", "A. yes", "B. no", "C. sometimes", "D. what's Earth?"}};
+//     char answers[4] = {'C', 'B', 'A', 'B'};
+//     int rows = sizeof(questions)/sizeof(questions[0]);
+//     int cols = sizeof(questions[0])/sizeof(questions[0][0]);
+//     char guess;
+//     int correct = 0;
+
+//     for (int i = 0; i < rows; i++){
+//         cout << "************************\n";
+//         cout << questions[i][0] << endl;
+//         cout << "************************\n";
+//         for (int j = 1; j < cols; j++){
+//             cout << questions[i][j] << endl;
+//         }
+//         cin >> guess;
+//         if (toupper(guess) == answers[i]){
+//             cout << "CORRECT\n";
+//             correct++;
+//         }
+//         else {
+//             cout << "WRONG\n";
+//             cout << "Answer: " << answers[i] << endl;
+//         }
+//     }
+
+//     cout << "CORRECT GUESSES: " << correct << endl;
+//     cout << "# OF QUESTIONS: " << sizeof(questions)/sizeof(questions[0]) << endl;
+//     cout << "SCORE: " << ((double) correct / (sizeof(questions)/sizeof(questions[0])))*100 << "%\n";
+
+//     return 0;
+// }
+
+
+//------------ MEMORY ADDRESSES ------------//
+// #include <iostream>
+
+// int main(){
+//     // memory address = location in memory where data is stored
+//     // a memory address can accessed with & (address-of operator)
+//     std::string name = "Artem";
+//     int age = 16;
+//     bool student = true;
+
+//     std::cout << &name << std::endl;
+//     std::cout << &age << std::endl;
+//     std::cout << &student << std::endl;
+
+//     return 0;
+// }
+
+
+//------------ POINTERS ------------//
+// #include <iostream>
+
+// int main(){
+//     // pointer = variable that stores a memory address of another varible
+//     //      sometimes it's easier to work with address
+//     // & - address-of operator. * - dereference operator
+
+//     std::string name = "Artem";
+//     std::string *pName = &name; 
+
+//     std::cout << pName << std::endl;
+//     std::cout << *pName << std::endl;
+
+//     return 0;
+// }
+
+
+//------------ TIC TAC TOE GAME ------------//
+// #include <iostream>
+// using namespace std;
+
+// void printBoard(char *positions);
+// char* playerMove(char *positions, int spot);
+// char* computerMove(char *positions, int spot);
+// bool& checkTie(char *positions, bool *running, int freeSpots); 
+
+// int main(){
+//     srand(time(NULL));
+//     int spot;
+//     char positions[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+//     bool running = true;
+//     int freeSpots = 9;
+
+//     do{
+//         printBoard(positions);
+//         cout << "Enter a spot to place a marker (1-9): ";
+//         cin >> spot;
+
+//         playerMove(positions, spot);
+//         freeSpots--;
+//         checkTie(positions, &running, freeSpots);
+//         if (!running) break;
+
+//         computerMove(positions, spot);
+//         freeSpots--;
+//         checkTie(positions, &running, freeSpots);
+//     } while (running);
+
+//     return 0;
+// }
+
+// bool& checkTie(char *positions, bool *running, int freeSpots){
+//     if ((positions[0] == positions[1] && positions[1] == positions[2] && positions[0] == 'X') || (positions[0] == positions[3] && positions[3] == positions[6] && positions[0] == 'X') || (positions[6] == positions[7] && positions[7] == positions[8] && positions[6] == 'X') || (positions[2] == positions[5] && positions[5]  == positions[8] && positions[2] == 'X') || (positions[0] == positions[4] && positions[4] == positions[8] && positions[0] == 'X') || (positions[6] == positions[4] && positions[4] == positions[2] && positions[6] == 'X')){
+//         printBoard(positions);
+//         cout << "YOU WIN!!!\n";
+//         *running = false;
+//     }
+//     else if ((positions[0] == positions[1] && positions[1] == positions[2] && positions[0] == 'O') || (positions[0] == positions[3] && positions[3] == positions[6] && positions[0] == 'O') || (positions[6] == positions[7] && positions[7] == positions[8] && positions[6] == 'O') || (positions[2] == positions[5] && positions[5]  == positions[8] && positions[2] == 'O') || (positions[0] == positions[4] && positions[4] == positions[8] && positions[0] == 'O') || (positions[6] == positions[4] && positions[4] == positions[2] && positions[6] == 'O')){
+//         printBoard(positions);
+//         cout << "YOU LOSE :(\n";
+//         *running = false;
+//     }
+//     else if (freeSpots == 0){
+//         printBoard(positions);
+//         cout << "IT'S A TIE!\n";
+//         *running = false;
+//     }
+//     return *running;
+// }
+
+// char* computerMove(char *positions, int spot){
+//     int randomSpot = (rand() % 9) + 1;
+//     if (positions[randomSpot-1] != ' '){
+//         while (positions[randomSpot-1] != ' '){
+//             randomSpot = (rand() % 9) + 1;
+//         }
+//     }
+//     positions[randomSpot-1] = 'O';
+//     return positions;
+// }
+
+// char* playerMove(char *positions, int spot){
+//     if (positions[spot-1] != ' '){
+//         while (positions[spot-1] != ' '){
+//             cout << "Invalid spot! Try again: ";
+//             cin >> spot;
+//         }
+//     }
+//     positions[spot-1] = 'X';
+//     return positions;
+// }
+
+// void printBoard(char *positions){
+//     for (int i = 0; i < 9; i+=3){
+//         cout << "     |     |   \n";
+//         cout << "  " << positions[i] << "  |  " << positions[i+1] << "  |  " << positions[i+2] << "  \n";
+//         i != 6 ? cout << "_____|_____|_____\n" : cout << "     |     |     \n";
+//     }
+// }
+
+
+//------------ DYNAMIC MEMORY ------------//
+// #include <iostream>
+
+// int main(){
+//     // dynamic memory = Memory that is allocated after the program is already compiled & running.
+//     //                  Use the 'new' operator to allocate memory in the heap rather than the stack
+
+//     //                  Useful when we dont't know how mush memory we will need. 
+//     //                  Makes our programs more flexible, especially when we accepting user input.
+
+//     int *pNum = NULL;
+//     pNum = new int;
+
+//     *pNum = 16;
+//     std::cout << "address: " << pNum << std::endl;
+//     std::cout << "value: " << *pNum << std::endl;
+
+//     return 0;
+// }
+
+
+//------------ FUNCTION TEMPLATES ------------//
+// #include <iostream>
+// template <typename T, typename U>
+
+// // auto will auto determine the return type. T and U - any data type
+// auto max(T x, U y){        
+//     return (x > y) ? x : y;
+// }
+
+// int main(){
+//     std::cout << max(1, 2) << std::endl;
+//     std::cout << max(1.1, 2.1) << std::endl;
+//     std::cout << max('1', '2') << std::endl;
+
+//     return 0;
+// }
+
+
+//------------ STRUCTS ------------//
 #include <iostream>
 
+
 int main(){
-    
+
 
     return 0;
 }
