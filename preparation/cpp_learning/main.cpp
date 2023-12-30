@@ -27,6 +27,47 @@
 //     return 0;
 // }
 
+// --------------- DATA TYPES ---------------//
+// #include <iostream>
+
+// int main(){
+//     char a = 'C';                   // single character    %c
+//     char b[] = "Bro";            // array of characters, string %s  
+
+//     float c = 3.141592;                          // 4 bytes (32 bits of precision) 6 - 7 digits %f
+//     double d = 3.141592653589793; // 8 bytes (64 bits of precision) 15 - 16 digits %lf
+
+//     bool e = true;                         // 1 byte (true or false) %d
+
+//     char f = 120;                          // 1 byte (-128 to +127) %d or %c
+//     unsigned char g = 120;       // 1 byte (0 to +255) %d or %c
+
+//     short int h = 32767;                   // 2 bytes (−32,768 to +32,767) %d
+//     unsigned short int i = 65535;  // 2 bytes (0 to +65,535) %d
+
+//     int j = 2147483647;                     // 4 bytes (-2,147,483,648 to +2,147,483,647) %d
+//     unsigned int k = 4294967295;  // 4 bytes (0 to +4,294,967,295) %u
+
+//     long long int l = 9223372036854775807; // 8 bytes (-9 quintillion to +9 quintillion) %lld
+//     unsigned long long int m = 18446744073709551615U; // 8 bytes (0 to +18 quintillion) %llu
+
+//     printf("%c\n", a);  // char
+//     printf("%s\n", b);  // character array, string
+//     printf("%f\n", c);  // float
+//     printf("%0.15lf\n", d); // double, long float
+//     printf("%d\n", e);  // bool
+//     printf("%c\n", f);  // char as numeric value, decimal
+//     printf("%c\n", g);  // unsigned char as numeric value
+//     printf("%d\n", h);  // short
+//     printf("%d\n", i);  // unsigned short
+//     printf("%d\n", j);  // int
+//     printf("%u\n", k);  // unsigned int
+//     printf("%lld\n", l);  // int
+//     printf("%llu\n", m);  // unsigned int
+
+//     return 0;
+// }
+
 
 //------------ CONST ------------//
 // #include <iostream>
@@ -1063,11 +1104,144 @@
 
 
 //------------ STRUCTS ------------//
+// #include <iostream>
+
+// struct student{
+//     std::string name;
+//     double gpa;
+//     bool enrolled;
+// };
+
+// int main(){
+//     // struct = a structure that group related variables under one name
+//     //                  structs can contain many different data types (string, int, double, bool, etc.)
+//     //                  variables in a struct are known as "members"
+//     //                  members can be access with . "Class Member Access Operator"
+
+//     student student1 = {"Artem", 5.96, true};
+//     // student1.name = "Artem";
+//     // student1.gpa = 5.96;
+//     // student1.enrolled = true;
+
+//     std::cout << student1.name << std::endl;
+//     std::cout << student1.gpa << std::endl;
+//     std::cout << student1.enrolled << std::endl;
+
+//     return 0;
+// }
+
+
+//------------ PASSING STRUCTS AS AN ARGUMENTS ------------//
+// #include <iostream>
+
+// struct Car{
+//     std::string model;
+//     int year;
+//     std::string color;
+// };
+
+// void printCar(Car &car);
+// void paintCar(Car &car, std::string color);
+
+
+// int main(){
+//     Car car1 = {"Mustang", 2023, "red"};
+//     Car car2 = {"Corvette", 2024, "blue"};
+
+//     paintCar(car1, "silver");
+//     paintCar(car2, "gold");
+
+//     printCar(car1);
+//     printCar(car2);
+
+//     return 0;
+// }
+
+// void printCar(Car &car){
+//     std::cout << &car << std::endl;
+//     std::cout << car.model << std::endl;
+//     std::cout << car.year << std::endl;
+//     std::cout << car.color << std::endl;
+// }
+// void paintCar(Car &car, std::string color){
+//     car.color = color;
+// }
+
+
+//------------ ENUMS ------------//
+// #include <iostream>
+
+// enum Day {sunday = 0, monday = 1, tuesday = 2};
+
+// int main(){
+//     // enums = a user-defined data type that consists of paired named-integer constants
+//     //                  GREAT if you have a set of potential options
+
+//     Day today = sunday;
+//     switch(today){
+//         case sunday:
+//             std::cout << "It's Sunday!";
+//             break;
+//         case monday:
+//             std::cout << "It's Monday!";
+//             break;
+//         case tuesday:
+//             std::cout << "It's Tuesday!";
+//             break;
+//     }
+
+
+//     return 0;
+// }
+
+
+//--------------- WRITING FILES ---------------//
+// #include <iostream>
+
+// int main() {
+//     FILE *pF = fopen("test.txt", "w");
+
+//     fprintf(pF, "\nSpongebob Squarepants");
+
+//     fclose(pF);
+
+//     // if (remove("test.txt") == 0){
+//     //     std::cout "That file was deleted successufully";
+//     // } else {
+//     //     std::cout << "That file was not deleted";
+//     // }
+
+//     return 0;
+// }
+
+
+//--------------- READING FILES ---------------//
+// #include <iostream>
+
+// int main() {
+//     FILE *pF = fopen("test.txt", "r");
+//     char buffer[255];
+
+//     if (pF == NULL) {
+//         std::cout << "Unable to open a file";
+//     } 
+    
+//     else {
+//         while (fgets(buffer, 255, pF) != NULL){
+//             std::cout << buffer;
+//         }
+//     }
+
+//     fclose(pF);
+
+//     return 0;
+// }
+
+
+//------------ OBJECT ORIENTED PROGRAMMING ------------//
 #include <iostream>
 
-
 int main(){
-
 
     return 0;
 }
