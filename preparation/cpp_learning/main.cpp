@@ -1239,9 +1239,174 @@
 
 
 //------------ OBJECT ORIENTED PROGRAMMING ------------//
+// #include <iostream>
+
+// class Human{
+//     public: 
+//         std::string name;
+//         std::string occupation;
+//         int age;
+
+//         void eat(){
+//             std::cout << "This person is eating\n";
+//         }
+//         void drink(){
+//             std::cout << "This person is drinking\n";
+//         }
+//         void sleep(){
+//             std::cout << "This person is sleeping\n";
+//         }
+// };
+
+// int main(){
+//     // object = A collection of attributes and methods
+//     //      They can have characteristics and could perform actions
+//     //      Can be used to mimic real worls items (ex. Phone, Book, Dog)
+//     //      Created from a class which acts as a "blue-print"
+
+//     Human human1;
+//     human1.name = "Rick";
+//     human1.occupation = "Scientist";
+//     human1.age = 30;
+
+//     human1.eat();
+//     human1.drink();
+//     human1.sleep();
+
+//     return 0;
+// }
+
+
+//------------ CONSTRUCTORS ------------//
+// #include <iostream>
+
+// class Student{
+//     public:
+//         std::string name;
+//         int age;
+//         double gpa;
+//     Student(std::string name, int age, double gpa){
+//         this->name = name;
+//         this->age = age;
+//         this->gpa = gpa;
+//     }
+// };
+
+// int main(){
+//     // constructor = a special method that is automatically called when an object is instatiated
+//     //              useful for assigning values to attributes as arguments
+
+//     Student student1("SpongeBob", 25, 3.2);
+//     std::cout << student1.name << std::endl; 
+//     std::cout << student1.age << std::endl; 
+//     std::cout << student1.gpa << std::endl; 
+
+//     return 0;
+// }
+
+
+//------------ CONSTRUCTOR OVERLOADING ------------//
+// #include <iostream>
+
+// class Pizza{
+//     public:
+//         std::string topping1;
+//         std::string topping2;
+
+//     Pizza(std::string topping1){
+//         this->topping1 = topping1;
+//     }
+//     Pizza(std::string topping1, std::string topping2){
+//         this->topping1 = topping1;
+//         this->topping2 = topping2;
+//     }
+// }
+// ;
+// int main(){
+//     // overloaded constructors = multiple constructors with the same name but different paramenters
+//     //                  allows for varying arguments when instatiating an object
+
+//     Pizza pizza1("Pepperoni");
+//     Pizza pizza2("Mushrooms", "Peppers");
+
+//     std::cout << pizza1.topping1 << std::endl;
+//     std::cout << pizza2.topping1 << ' ' << pizza2.topping2 << std::endl;
+
+//     return 0;
+// }
+
+
+//------------ GETTERS AND SETTERS ------------//
+// #include <iostream>
+
+// class Stove{
+//     private:
+//         int temperature = 0;
+//     public:
+//         int getTemperature(){   // getter
+//             return this->temperature;
+//         }
+//         void setTemperature(int temperature){   // setter
+//             if (temperature >= 0 && temperature <= 50){
+//                 this->temperature = temperature;
+//             }
+//             else std::cout << "Invalid temp!\n";
+//         }
+// };
+
+// int main(){
+//     // Abstraction = hiding unnecessary data from outside a class
+//     // getter = function that makes a private attribute READABLE
+//     // setter = function that makes a private attribute WRITABLE
+    
+//     Stove stove;
+
+//     std::cout << stove.getTemperature() << std::endl;
+//     stove.setTemperature(30);
+//     std::cout << stove.getTemperature() << std::endl;
+
+//     return 0;
+// }
+
+
+//------------ INHERITANCE ------------//
 #include <iostream>
 
+class Animal{
+    public:
+        bool alive = true;
+
+        void eat(){
+            std::cout << "This animal is eating" << std::endl;
+        }
+};
+
+class Dog : public Animal {
+    public:
+        void bark(){
+            std::cout << "The dog goes woof!" << std::endl;
+        }
+};
+
+class Cat : public Animal {
+    public:
+        void meow(){
+            std::cout << "The cat goes meow!" << std::endl;
+        }
+};
+
 int main(){
+    // inheritance = A class can receive attributes and methods from an another class
+    //          Children classes inherit from parent class
+    //          Helps to reuse similar code found within multiple classes
+
+    Dog dog;
+    dog.eat();
+    dog.bark();
+
+    Cat cat;
+    cat.eat();
+    cat.meow();
 
     return 0;
 }
