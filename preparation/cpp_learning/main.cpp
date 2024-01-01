@@ -1404,9 +1404,12 @@ int main(){
     dog.eat();
     dog.bark();
 
+
     Cat cat;
     cat.eat();
     cat.meow();
+    uint64_t asd = 122;
+    std::cout << asd;
 
     return 0;
 }
