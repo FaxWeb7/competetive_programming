@@ -53,6 +53,14 @@
         "variant": "cpp",
         "vector": "cpp",
         "algorithm": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "thread": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "unordered_set": "cpp",
+        "list": "cpp",
+        "deque": "cpp",
+        "queue": "cpp",
+        "span": "cpp"
     }
 }
