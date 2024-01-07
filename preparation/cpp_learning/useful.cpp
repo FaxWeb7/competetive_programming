@@ -12,9 +12,11 @@ using pii = std::pair<int, int>;
 using pll = std::pair<long, long>;
 
 //полезные define
-#define max(t) std::numeric_limits<t>::max()
-#define min(t) std::numeric_limits<t>::min()
-#define lowest(t) std::numeric_limits<t>::lowest()
+#define max(a, b) (a > b ? a : b)
+#define min(a, b) (a < b ? a : b)
+#define maxT(t) std::numeric_limits<t>::max()
+#define minT(t) std::numeric_limits<t>::min()
+#define lowestT(t) std::numeric_limits<t>::lowest()
 
 int main(){
     // пары элементов
@@ -33,6 +35,7 @@ int main(){
     std::cout << -5E15L << std::endl;  // -5^10*15 (L - для того, чтобы вывелось число типа long)
     std::cout << (int)1E9+7 << std::endl; // (10^9) + 7
     std::cout << static_cast<long long>(9e16L) << " == " << (long long)(9e16L) << std::endl;
+    // int16_t==int; int32_t==long int; int64_t==long long int
 
     double const PI = 3.14159;
     std::cout << std::fixed << std::setprecision(4) << PI << std::endl; // fixed - отсчет чисел без целой части, setprecision(x) - округлить до x знаков после запятой
