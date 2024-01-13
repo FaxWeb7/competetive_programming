@@ -1,24 +1,37 @@
 #include <iostream>
-#include <boost/multiprecision/cpp_int.hpp>
-#include <chrono>
+using namespace std;
 
-namespace mp = boost::multiprecision;
-
-int main() {
-    auto start_time = std::chrono::steady_clock::now();
-
-    int n = 1000; // или другое значение
-
-    mp::cpp_int result = 1;
-    for (int i = 1; i <= n; ++i) {
-        result *= i;
+int countC1(int& k, int i){
+    int c = 0;
+    while (k%i == 0){
+        k /= i;
+        c++;
     }
+    return c;
+}
 
-    auto end_time = std::chrono::steady_clock::now();
-    double execution_time = std::chrono::duration<double>(end_time - start_time).count();
+int countC2(int n, int i){
+    int c = 0;
+    while (n / i > 0){
+        c += n/i;
+        n /= i;
+    }
+    return c;
+}
 
-    std::cout << "Факториал числа " << n << " равен " << result << std::endl;
-    std::cout << "Время выполнения: " << execution_time << " секунд" << std::endl;
+int main(){
+    int n, k;
+    cin >> n >> k;
+
+    int result = 1E9;
+    for (int i = 2; i <= k; i++){
+        if (k%i == 0){
+            int c1 = countC1(k, i);
+            int c2 = countC2(n, i);
+            result = (result < c2/c1 ? result : c2/c1);
+        }
+    }
+    cout << result;
 
     return 0;
 }

@@ -19,6 +19,9 @@ using pll = std::pair<long, long>;
 #define lowestT(t) std::numeric_limits<t>::lowest()
 
 int main(){
+    // ускорение кода(после этого использовать только scanf и printf)
+    std::ios::sync_with_stdio(0);
+    std::cin.tie(nullptr);
     // пары элементов
     std::pair<int, double> pair{1, 3.14};
     std::cout << "Pair: (" << pair.first << ", " << pair.second << ")\n\n";

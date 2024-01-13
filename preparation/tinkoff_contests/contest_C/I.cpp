@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <climits>
+#include <algorithm>
 using namespace std;
 using ll = long long;
 
@@ -26,7 +26,7 @@ int main(){
     vector<ll> stack;
     int stackSize = 0;
 
-    pair<ll, ll> minPancake = {INT_MAX, -1};
+    pair<ll, ll> minPancake = {numeric_limits<int>::max(), -1};
     for(int i = 0; i < t; i++){
         ll num1;
         ll num2 = 0;
