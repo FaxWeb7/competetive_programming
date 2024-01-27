@@ -55,6 +55,13 @@ int main(){
     };
     std::cout << incCounter(10) << "\n\n";
 
+    //выделение памяти
+    int *a = new int(5); //выделение памяти под переменную содержащую 5
+    delete a; //освобождение памяти
+
+    int *b = new int[100]; //выделение для массива из 100 значений
+    delete [] b;//освобождение для массива
+
     // vector - динамический массив
     // begin(arr) == arr.begin(); 
     // end(arr) == arr.end(); 
@@ -64,6 +71,10 @@ int main(){
     // prev(arr) == arr.prev()
     std::vector<int> v1 {1,2,3};// {1, 2, 3}
     std::vector<int> v2 (3,5);  // {5, 5, 5} (3 раза по 5s)
+
+    int *firstElP = &v1[0]; //удобная работа с элементами массива через указатели
+    int *secondElP = firstElP+1;
+    std::cout << *firstElP << " " << *secondElP << std::endl;
 
     v1.push_back(1);            // добавление нового элемента в конец вектора
     v1.reserve(10);             // зарезервировать память для 10 значений в векторе (ускоряет другие методы, например push_back)
