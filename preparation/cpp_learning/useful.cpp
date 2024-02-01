@@ -47,6 +47,13 @@ int main(){
     std::cout << 01234567 << std::endl; // 8-ричная сс
     std::cout << 0x111111 << "\n\n"; // 16-ричная сс
 
+    //строки
+    std::string s = "prevName: Artem";
+    s.replace(s.find("prevName"), std::string("prevName").size(), "newName"); // замена символом строки
+
+    std::string age = "16";
+    std::cout << stoi(age) << std::endl; //строка в число 
+
     // лямбда функции
     // лямбда функцию необязательно называть. в квадратных скобках указываются ссылки на используемые переменные из внешнего контекста
     int counter = 5;
