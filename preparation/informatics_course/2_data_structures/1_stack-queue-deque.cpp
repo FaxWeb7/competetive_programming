@@ -14,7 +14,7 @@ struct Stack {
     }
     int pop(){
         if (top != -1){
-            return arr[top];
+            return arr[top--];
         } return -1;
     }
 };
@@ -35,6 +35,53 @@ struct Queue{
     }
 };
 
+struct Deque{
+    int capacity = 100;
+    int* arr = new int[capacity];
+    int front = 0;
+    int back = -1;
+
+    bool isEmpty() { return back < front; }
+    bool isFull() { return back - front + 1 >= capacity; }
+
+    void pushFront(int n) {
+        if (!isFull()) {
+            arr[--front % capacity] = n;
+        } else cout << "deque is full" << endl;
+    }
+
+    void pushBack(int n) {
+        if (!isFull()) {
+            arr[++back % capacity] = n;
+        } else cout << "deque is full\n";
+    }
+
+    int popFront() {
+        if (!isEmpty()) {
+            return arr[front++ % capacity];
+        } return -1;
+    }
+
+    int popBack() {
+        if (!isEmpty()) {
+            return arr[back-- % capacity];
+        } return -1;
+    }
+
+    int getFront() {
+        if (!isEmpty()) {
+            return arr[front % capacity];
+        } return -1;
+    }
+
+    int getBack() {
+        if (!isEmpty()) {
+            return arr[back % capacity];
+        } return -1;
+    }
+};
+
+
 int main() {
     Stack stack;
     stack.push(5);
@@ -45,8 +92,16 @@ int main() {
     Queue queue;
     queue.push(5);
     queue.push(10);
-    cout << queue.pop();
+    cout << queue.pop() << endl;
     cout << queue.pop() << "\n\n";
+
+    Deque deque;
+    deque.pushBack(1);
+    deque.pushBack(2);
+    deque.pushFront(3);
+    deque.pushFront(4);
+    cout << deque.popFront() << endl;
+    cout << deque.popBack() << "\n\n";
 
 
     return 0;
