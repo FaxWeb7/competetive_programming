@@ -2,57 +2,29 @@
 #include <vector>
 using namespace std;
 
-class MinHeap{
-    private:
-        int size;
-        vector<int> heap;
-        void heapify(int i){
-            int minI = i;
-            int l = 2*i + 1;
-            int r = 2*i + 2;
-
-            if (l < size && heap[l] < heap[minI]) minI = l;
-            if (r < size && heap[r] < heap[minI]) minI = r;
-
-            if (minI != i){
-                swap(heap[i], heap[minI]);
-                heapify(minI);
-            }
-        }
-
-    public: 
-        MinHeap(){
-            size = 0;
-        }
-        void insert(int value){
-            heap.push_back(value);
-            size++;
-            for (int i = size / 2 - 1; i >= 0; i--) heapify(i);
-        }
-
-        int getMin(){
-            return heap[0];
-        }
-
-        void extractMin(){
-            
-        }
-};
+int extractMin(vector<int> arr, int n, int i, int k){
+    int current = 0;
+    while (2*current+1 < k){
+        int minP = (2*current+2 < k && arr[2*current+2+i] < arr[2*current+1+i]) ? 2*current+2 : 2*current+1;
+        if (arr[current+i] > arr[minP+i]){
+            swap(arr[current+i], arr[minP+i]);
+            current = minP;
+        } else break;
+    }
+    return arr[i];
+}
 
 int main(){
     int n, k;
     cin >> n >> k;
 
-    MinHeap heap;
-    vector<int> ans;
-    for (int i = 0; i < n; i++) {
-        int num;
-        cin >> num;
-        heap.insert(num);
-        if (i >= k-1){
-            ans.push_back(heap.getMin());
-            heap.extractMin();
-        }
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++) cin >> arr[i];
+
+    vector<int> ans(n-k+1);
+    for (int i = 0; i < n-k+1; i++){
+        int min = extractMin(arr, n, i, k);
+        ans[i] = min;
     }
 
     for (int num : ans) cout << num << endl;
