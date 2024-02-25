@@ -7,13 +7,13 @@ private:
     vector<int> tree;
     int n;
 
-    void buildTree(vector<int>& nums, int node, int start, int end) {
+    void build(vector<int>& nums, int node, int start, int end) {
         if (start == end) {
             tree[node] = nums[start];
         } else {
             int mid = (start + end) / 2;
-            buildTree(nums, 2 * node + 1, start, mid);
-            buildTree(nums, 2 * node + 2, mid + 1, end);
+            build(nums, 2 * node + 1, start, mid);
+            build(nums, 2 * node + 2, mid + 1, end);
             tree[node] = tree[2 * node + 1] + tree[2 * node + 2];
         }
     }
@@ -47,10 +47,10 @@ public:
     SegmentTree(vector<int>& nums, int n) {
         this->n = n;
         tree.resize(4 * n, 0);
-        buildTree(nums, 0, 0, n - 1);
+        build(nums, 0, 0, n - 1);
     }
 
-    int sumRange(int left, int right) {
+    int segmentSum(int left, int right) {
         return query(0, 0, n - 1, left, right);
     }
 
@@ -64,9 +64,9 @@ int main() {
     int n = 6;
     SegmentTree segTree(nums, n);
 
-    cout << segTree.sumRange(0, 2) << endl;
+    cout << segTree.segmentSum(0, 2) << endl;
     segTree.updateVal(0, 100);
-    cout << segTree.sumRange(2, 5) << endl;
+    cout << segTree.segmentSum(2, 5) << endl;
 
     return 0;
 }
