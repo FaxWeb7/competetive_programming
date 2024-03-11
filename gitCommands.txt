@@ -1,5 +1,5 @@
 полезные команды:
-git help COMMAND 
+git help COMMAND  
 git status - статус репозитория
 git log - история коммитов репозитория
 
