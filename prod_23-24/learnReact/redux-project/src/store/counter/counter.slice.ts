@@ -22,5 +22,5 @@ export const counterSlice = createSlice({
   }
 })
 
-export const { actions, reducer: counterReducer } = counterSlice
+export const { actions: counterActions, reducer: counterReducer } = counterSlice
 export const selectCount = (state: RootState) => state.counter

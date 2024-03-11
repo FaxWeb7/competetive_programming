@@ -1,0 +1,30 @@
+//* Container & BreakPoints
+$containerWidth: 1450;
+$containerYPadding: 60;
+$containerXPadding: 30;
+$breakpoint1450: 1449.98 + px;
+$breakpoint992: 991.98 + px;
+$breakpoint768: 767.98 + px;
+$breakpoint576: 575.98 + px;
+$breakpoint480: 479.98 + px;
+$burgerBreakpoint: $breakpoint576;
+
+//* Colors
+$bodyBackground: white;
+
+//* Fonts
+%font{
+  font-family: 'name', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: black;
+}
+
+//? Animations
+//* Fade
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
