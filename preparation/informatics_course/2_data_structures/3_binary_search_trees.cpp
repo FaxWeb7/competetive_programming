@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 struct Node {
@@ -109,7 +110,29 @@ public:
     }
 };
 
+void dfs(Node* root){
+    if (root == nullptr) return;
+    cout << root->key << " ";
+    dfs(root->left);
+    dfs(root->right);
+}
 
+void bfs(Node* root){
+    if (root == nullptr) return;
+    queue<Node*> q;
+    q.push(root);
+    while (!q.empty()){
+        Node* current = q.front();
+        cout << current->key << " ";
+        q.pop();
+        if (current->left != nullptr){
+            q.push(root->left);
+        }
+        if (current->right != nullptr){
+            q.push(root->right);
+        }
+    }
+}
 
 int main(){
     BST tree;
@@ -124,6 +147,6 @@ int main(){
     tree.remove(4);
     tree.printTree();
     cout << tree.search(5);
-
+    
     return 0;
 }

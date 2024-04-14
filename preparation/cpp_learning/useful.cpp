@@ -6,10 +6,11 @@
 #include <deque>
 #include <set>
 
-//полезные using
-using ll = long long int;
-using pii = std::pair<int, int>;
-using pll = std::pair<long, long>;
+//полезные typedef
+typedef long long ll;
+typedef std::vector<int> vi;
+typedef std::vector<ll> vll;
+typedef std::pair<int, int> ii;
 
 //полезные define
 #define max(a, b) (a > b ? a : b)
