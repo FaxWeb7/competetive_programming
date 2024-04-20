@@ -18,12 +18,11 @@ typedef std::pair<int, int> ii;
 #define maxT(t) std::numeric_limits<t>::max()
 #define minT(t) std::numeric_limits<t>::min()
 #define lowestT(t) std::numeric_limits<t>::lowest()
+#define all(v) (v).begin(), (v).end()
 
 int main(){
-    // ускорение кода(после этого использовать только scanf и printf)
-    std::ios::sync_with_stdio(0);
-    std::cin.tie(nullptr);
-    // cin.tie(0)->sync_with_stdio(0);
+    // ускорение кода
+    std::ios_base::sync_with_stdio(false), std::cin.tie(nullptr);
     
     // пары элементов
     std::pair<int, double> pair{1, 3.14};
