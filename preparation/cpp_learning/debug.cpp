@@ -86,8 +86,8 @@ void debug_out(Head H, Tail... T) {
 
 #define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
 
-// int main(){
-//     vector<int> arr = {1,2,5};
-//     int a = 30;
-//     debug(a, arr);
-// }
+int main(){
+    vector<int> arr = {1,2,5};
+    int a = 30;
+    debug(a, arr);
+}

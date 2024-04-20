@@ -23,6 +23,8 @@ int main(){
     // ускорение кода(после этого использовать только scanf и printf)
     std::ios::sync_with_stdio(0);
     std::cin.tie(nullptr);
+    // cin.tie(0)->sync_with_stdio(0);
+    
     // пары элементов
     std::pair<int, double> pair{1, 3.14};
     std::cout << "Pair: (" << pair.first << ", " << pair.second << ")\n\n";
