@@ -1,0 +1,29 @@
+полезные команды:
+git help COMMAND  
+git status - статус репозитория
+git log - история коммитов репозитория
+
+
+работа с репозиторием:
+git init - инициализация репозитория
+git remote add origin "LINKTOREPO" - привязка репозитория к github
+git add PATH - добавление новых файлов в репозиторий
+git rm FILENAME - удаление файлов из гита (--cached если нужно сохранить его на диске)
+git commit -m "message" - сохранение изменений для текущей ветки
+git reset COMMITID - сброс коммита (--soft файлы не меняются, готовы к коммиту; --mixed файлы не меняются, не готовы к коммиту; --hard файлы сбрасываются до предыдущего состояния)
+git checkout COMMITID - переход на определенный коммит
+git push origin master - публикация коммитов в github на ветке master
+git pull origin master - подгрузка коммитов с ветки master (если несколько человек работают над проектом и нужно подтянуть их изменения к себе на машину)
+
+
+работа с ветками:
+git branch - просмотр текущей ветки
+git branch NAME - создание новой ветки
+git checkout NAME - переход на определенную ветку
+git branch -d NAME - удаление веткиs
+git merge NAME - слияние ветки, в которой сейчас находимся в веткой NAME (к примеру, находимся в origin и NAME=feature)
+
+если нужно обновить .gitignore:
+1) обновить .gitignore
+2) git rm -r --cached
+3) git add .
