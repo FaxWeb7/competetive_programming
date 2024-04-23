@@ -13,6 +13,7 @@ typedef std::vector<ll> vll;
 typedef std::pair<int, int> ii;
 
 //полезные define
+#define watch(x) cout << (#x) << " is " << (x) << '\n'
 #define max(a, b) (a > b ? a : b)
 #define min(a, b) (a < b ? a : b)
 #define maxT(t) std::numeric_limits<t>::max()
