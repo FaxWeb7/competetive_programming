@@ -13,15 +13,13 @@ vi dijkstra(vector<vector<ii>> &g, int start){
     set<ii> q;
 
     dist[start] = 0;
-    q.insert({ dist[start], start }); 
-    // q[i].first обязательно должно быть именно расстояние от А до Б, тк set в первую очередь сортирует по первому ключу
-
-    while(!q.empty()){
+    q.insert({ dist[start], start });
+    while (!q.empty()){
         int nearest = q.begin()->second;
         q.erase(q.begin());
 
         for (auto &[to, weight] : g[nearest]){
-            if (dist[to] > dist[nearest] + weight) {
+            if (dist[to] > dist[nearest] + weight){
                 q.erase({ dist[to], to });
                 dist[to] = dist[nearest] + weight;
                 q.insert({ dist[to], to });
@@ -33,19 +31,24 @@ vi dijkstra(vector<vector<ii>> &g, int start){
 }
 
 int main(){
-    int n, m, start;
-    cin >> n >> m;
+    int n, m, start, finish;
+    cin >> n >> start >> finish >> m;
+    start--; finish--;
 
     vector<vector<ii>> g(n);
     for (int i = 0; i < m; i++){
-        int a, b, weight;
-        cin >> a >> b >> weight;
+        int a, startTime, b, finishTime;
+        cin >> a >> startTime >> b >> finishTime;
         a--; b--;
-        g[a].push_back({ b, weight });
-        g[b].push_back({ a, weight });
+        g[a].push_back({ b, finishTime - startTime });
     }
 
-    cin >> start;
+    vi dist = dijkstra(g, start);
+    if (dist[finish] == INF) {
+        cout << -1;
+        return 0;
+    }
+    cout << dist[finish];
 
     return 0;
 }
