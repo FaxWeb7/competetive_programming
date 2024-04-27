@@ -5,8 +5,8 @@ using namespace std;
 const int INF = 1e9;
 
 struct Flight {
-    int a, b, weight;
-    Flight(int a, int b, int weight) : a(a), b(b), weight(weight) {}
+    int a, b, cost;
+    Flight(int a, int b, int cost) : a(a), b(b), cost(cost) {}
 };
 
 int main() {
@@ -15,9 +15,9 @@ int main() {
 
     vector<Flight> flights;
     for (int i = 0; i < m; i++) {
-        int a, b, weight;
-        cin >> a >> b >> weight;
-        Flight flight(a, b, weight);
+        int a, b, cost;
+        cin >> a >> b >> cost;
+        Flight flight(a, b, cost);
         flights.push_back(flight);
     }
 
@@ -25,19 +25,19 @@ int main() {
     g[0][start] = 0;
 
     for (int i = 1; i <= k; ++i) {
-        for (auto &[a, b, weight] : flights) {
-            if (g[i - 1][a] != INF) {
-                g[i][b] = min(g[i][b], g[i - 1][a] + weight);
+        for (auto &[a, b, cost] : flights) {
+            if (g[i - 1][a] != INF && g[i][b] > g[i - 1][a] + cost) {
+                g[i][b] = g[i - 1][a] + cost;
             }
         }
     }
 
-    int minWeight = INF;
+    int minCost = INF;
     for (int i = 1; i <= k; ++i) {
-        minWeight = min(minWeight, g[i][finish]);
+        minCost = min(minCost, g[i][finish]);
     }
 
-    cout << (minWeight == INF ? -1 : minWeight);
+    cout << (minCost == INF ? -1 : minCost);
 
     return 0;
 }
