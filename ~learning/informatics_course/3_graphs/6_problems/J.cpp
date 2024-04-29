@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+typedef vector<double> vd;
+const int INF = 1E9;
+
+int main(){
+    int n, m, start, finish;
+    cin >> n >> m >> start >> finish;
+    start--, finish--;
+
+    vector<vd> dist(n, vd(n, INF));
+    for (int i = 0; i < n; i++){
+        dist[i][i] = 0;
+    }
+    for (int i = 0; i < m; i++){
+        int a, b;
+        double weight;
+        cin >> a >> b >> weight;
+        a--, b--;
+        dist[a][b] = min(dist[a][b], weight/100);
+        dist[b][a] = min(dist[b][a], weight/100);
+    }
+
+    for (int v = 0; v < n; v++){
+        for (int a = 0; a < n; a++){
+            for (int b = 0; b < n; b++){
+                if (dist[a][v] != INF && dist[v][b] != INF && dist[a][b] > ((dist[a][v] + dist[v][b]) - (dist[a][v] * dist[v][b]))){
+                    dist[a][b] = (dist[a][v] + dist[v][b]) - (dist[a][v] * dist[v][b]);
+                }
+            }
+        }
+    }
+
+    cout << dist[start][finish];
+
+    return 0;
+}
