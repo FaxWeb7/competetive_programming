@@ -8,41 +8,33 @@
 
 using namespace std;
 
-class MinStack {
+class Solution {
 public:
-    vector<int> stack;
-    vector<int> mins;
-    int size = 0;
-    int minsSize = 0;
-    
-    MinStack() {
-        stack.resize(3E4);
-        mins.resize(3E4);
-    }
-    
-    void push(int val) {
-        stack[size++] = val;
-        if (minsSize == 0 || val <= mins[minsSize-1]) {
-            mins[minsSize++] = val;
+    vector<int> dailyTemperatures(vector<int>& temperatures) {
+        stack<pair<int, int>> stack;
+        vector<int> res(temperatures.size());
+        for (int i = temperatures.size()-1; i >= 0; --i){
+            while (!stack.empty() && stack.top().first <= temperatures[i]){
+                stack.pop();
+            }
+
+            if (!stack.empty()){
+                res[i] = stack.top().second - i;
+            }
+            stack.push({temperatures[i], i});
         }
-    }
-    
-    void pop() {
-        size--;
-        if (stack[size] == mins[minsSize-1]) minsSize--;
-    }
-    
-    int top() {
-        return stack[size-1];
-    }
-    
-    int getMin() {
-        return mins[minsSize-1];
+
+        return res;
     }
 };
 
 int main(){
     stack<int> s;
+    int a, b, x;
+    cin >> a >> b >> x;
+    Solution sol;
+    vector<int> c = {a, b, x};
+    sol.dailyTemperatures(c);
 
     return 0;
 }
