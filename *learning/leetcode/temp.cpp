@@ -11,32 +11,22 @@ using namespace std;
 
 class Solution {
 public:
-    int largestRectangleArea(vector<int>& heights) {
-        stack<int> s;
-
-        int maxH = 0;
-        pair<int, int> ans{0, 0}; // {height, width}
-        for (int &height : heights){
-            if (height >= ans.first) {
-                if (ans.first * (ans.second+1) < height) {
-                    ans.second++;
-                } else {
-                    ans.first = height;
-                    ans.second = 1;
-                }
-            }
-            maxH = max(maxH, height);
-            s.push(height);
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        int l = 0, r = numbers.size()-1;
+        while (l < r){
+            if (numbers[l] + numbers[r] == target) break;
+            
+            if (numbers[l] + numbers[r] < target) l++;
+            else r--;
         }
 
-        return (ans.first * ans.second > maxH ? ans.first * ans.second : maxH);
+        return {l+1, r+1};
     }
 };
 
 int main(){
     vector<string> a = {"10","6","9","3","+","-11","*","/","*","17","+","5","+"};
     Solution s;
-    cout << s.evalRPN(a);
 
     return 0;
 }
