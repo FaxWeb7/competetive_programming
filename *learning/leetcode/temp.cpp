@@ -11,9 +11,24 @@ using namespace std;
 
 class Solution {
 public:
-    int search(vector<int>& nums, int target) {
-        auto asd = lower_bound(nums.begin(), nums.end(), target) - nums.begin();
-        return asd;
+    bool check(vector<int> &piles, int targetH, int m){
+        int curH = 0;
+        for (int &pile : piles){
+            curH += ceil((double)pile / m);
+        }
+
+        return curH <= targetH;
+    }
+
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int l = 1, r = piles[max_element(piles.begin(), piles.end()) - piles.begin()];
+        while (l < r){
+            int m = (r + l) / 2;
+            if (check(piles, h, m)) r = m;
+            else l = m + 1;
+        }
+
+        return l;
     }
 };
 

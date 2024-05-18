@@ -4,6 +4,7 @@
 #include <cmath>
 using namespace std;
 typedef vector<int> vi;
+typedef long long ll;
 #define all(x) x.begin(), x.end()
 
 int main(){
@@ -13,26 +14,26 @@ int main(){
     while (t--){
         int n, k, q;
         cin >> n >> k >> q;
-        vi a(k + 1), b(k + 1), queries(q);
+        vi a(k + 1), b(k + 1);
         for (int i = 1; i <= k; ++i) cin >> a[i];
         for (int i = 1; i <= k; ++i) cin >> b[i];
-        for (int i = 0; i < q; ++i) cin >> queries[i];
 
-        for (int &d : queries){
-            int leftIdx = upper_bound(all(a), d) - a.begin();
-            leftIdx--;
+        while (q--){
+            ll d;
+            cin >> d;
+            int idx = lower_bound(all(a), d) - a.begin();
 
-            if (a[leftIdx] == d){
-                cout << b[leftIdx] << ' ';
-                continue;
+            if (a[idx] == d){
+                cout << b[idx] << ' ';
+            } else {
+                idx--;
+                ll ans = b[idx] + ((b[idx+1]-b[idx]) * (d-a[idx]))/(a[idx+1]-a[idx]);
+                cout << ans << ' ';
             }
-
-            double mod = (d - a[leftIdx]) * ((double)(b[leftIdx+1] - b[leftIdx]) / (a[leftIdx+1] - a[leftIdx]));
-            cout << int(b[leftIdx] + mod) << ' ';
         }
 
         cout << '\n';
     }
-
+    
     return 0;
 }
