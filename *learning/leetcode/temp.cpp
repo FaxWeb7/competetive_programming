@@ -8,29 +8,36 @@
 #include <stack>
 
 using namespace std;
+typedef long long ll;
+typedef vector<int> vi;
+typedef pair<string, int> si;
 
 class Solution {
 public:
-    bool check(vector<int> &piles, int targetH, int m){
-        int curH = 0;
-        for (int &pile : piles){
-            curH += ceil((double)pile / m);
+    int lengthOfLongestSubstring(string s) {
+        int maxLen = 0;
+        unordered_map<char, int> mp;
+        for (int l = 0, r = 0; l < s.size(); ++l){
+            int curLen = 0;
+            while (!mp[s[r]]){
+                mp[s[r]] = 1;
+                curLen++, r++;
+            }
+
+            maxLen = max(maxLen, curLen);
+            mp[s[l]] = 0;
         }
 
-        return curH <= targetH;
-    }
-
-    int minEatingSpeed(vector<int>& piles, int h) {
-        int l = 1, r = piles[max_element(piles.begin(), piles.end()) - piles.begin()];
-        while (l < r){
-            int m = (r + l) / 2;
-            if (check(piles, h, m)) r = m;
-            else l = m + 1;
-        }
-
-        return l;
+        return maxLen;
     }
 };
+
+/**
+ * Your TimeMap object will be instantiated and called as such:
+ * TimeMap* obj = new TimeMap();
+ * obj->set(key,value,timestamp);
+ * string param_2 = obj->get(key,timestamp);
+ */
 
 int main(){
     vector<int> a = {0, 0, 0, 0};

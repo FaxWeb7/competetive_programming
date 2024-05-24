@@ -20,6 +20,19 @@ int32_t main(){
     int t;
     cin >> t;
     while (t--){
+        int n, k;
+        cin >> n >> k;
+        
+        int prevNum = -1;
+        bool isSorted = true;
+        for (int i = 0; i < n; ++i) {
+            int num; cin >> num;
+            if (prevNum != -1 && prevNum > num) isSorted = false;
+            prevNum = num; 
+        }
+        
+        if (k == 1 && !isSorted) cout << "NO\n";
+        else cout << "YES\n";
     }
 
     return 0;
