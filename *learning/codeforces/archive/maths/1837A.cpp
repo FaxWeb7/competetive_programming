@@ -13,7 +13,13 @@ typedef pair<int, int> ii;
 const int INF = 1e9;
 
 void solve(){
+    int x, k; cin >> x >> k;
 
+    if (x % k != 0) {
+        cout << 1 << '\n' << x << '\n';
+    } else {
+        cout << 2 << '\n' << x-1 << ' ' << 1 << '\n';
+    }
 }
 
 int32_t main(){

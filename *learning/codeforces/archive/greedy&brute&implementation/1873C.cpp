@@ -1,6 +1,7 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
+#include <set>
+#include <algorithm>
 
 using namespace std;
 typedef long long ll;
@@ -10,18 +11,26 @@ typedef pair<int, int> ii;
 #define MP make_pair
 #define F first
 #define S second
+#define int ll
 const int INF = 1e9;
 
-void solve(){
-
-}
 
 int32_t main(){
     ios::sync_with_stdio(false), cin.tie(nullptr);
     int t;
     cin >> t;
     while (t--){
-        solve();
+        int res = 0;
+        for (int i = 1; i <= 10; ++i){
+            for (int j = 1; j <= 10; ++j){
+                char c; cin >> c;
+                if (c == 'X'){
+                    res += min((i <= 5 ? i : 11-i), (j <= 5 ? j : 11-j));
+                }
+            }
+        }
+
+        cout << res << '\n';
     }
 
     return 0;

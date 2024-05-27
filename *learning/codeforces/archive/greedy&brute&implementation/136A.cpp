@@ -13,16 +13,20 @@ typedef pair<int, int> ii;
 const int INF = 1e9;
 
 void solve(){
+    int n; cin >> n;
 
+    vi res(n);
+    for (int i = 0; i < n; ++i){
+        int num; cin >> num;
+        res[num-1] = i;
+    }
+
+    for (int i : res) cout << i+1 << ' ';
 }
 
 int32_t main(){
     ios::sync_with_stdio(false), cin.tie(nullptr);
-    int t;
-    cin >> t;
-    while (t--){
-        solve();
-    }
+    solve();
 
     return 0;
 }

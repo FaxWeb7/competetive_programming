@@ -8,7 +8,7 @@ int main(){
         min_element(begin, end);
         max_element(begin, end);
         reverse(begin, end);
-        rotate(first, n_first, last); n_first на 0 индекс переходит, n_first-1 на последний
+        rotate(first, n_first, last); n_first 1 влево переходит, n_first-1 на 2 влево либоа на последний
 
         слить два вектора:
         vector<int> res;

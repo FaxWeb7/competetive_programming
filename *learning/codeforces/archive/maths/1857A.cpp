@@ -1,6 +1,6 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 typedef long long ll;
@@ -10,10 +10,21 @@ typedef pair<int, int> ii;
 #define MP make_pair
 #define F first
 #define S second
+#define int ll
 const int INF = 1e9;
 
 void solve(){
+    int n; cin >> n;
+    vi a(n);
+    for (int i = 0; i < n; ++i) cin >> a[i];
 
+    int even = 0, odd = 0;
+    for (int k : a) {
+        if (k % 2 == 0) even++;
+        else odd++;
+    }
+
+    cout << (odd % 2 == 0 ? "YES\n" : "NO\n");
 }
 
 int32_t main(){

@@ -1,6 +1,7 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
+#include <set>
+#include <algorithm>
 
 using namespace std;
 typedef long long ll;
@@ -10,18 +11,24 @@ typedef pair<int, int> ii;
 #define MP make_pair
 #define F first
 #define S second
-const int INF = 1e9;
+#define int ll
+const int INF = 6;
 
-void solve(){
-
-}
 
 int32_t main(){
     ios::sync_with_stdio(false), cin.tie(nullptr);
     int t;
     cin >> t;
     while (t--){
-        solve();
+        int n; cin >> n;
+
+        int sum = 0;
+        for (int i = 0; i < n-1; ++i){
+            int num; cin >> num;
+            sum += num;
+        }
+
+        cout << -sum << '\n';
     }
 
     return 0;

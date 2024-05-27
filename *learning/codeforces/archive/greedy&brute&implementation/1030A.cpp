@@ -1,6 +1,6 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 typedef long long ll;
@@ -13,16 +13,20 @@ typedef pair<int, int> ii;
 const int INF = 1e9;
 
 void solve(){
+    int n; cin >> n;
 
+    int res = 0;
+    for (int i = 0; i < n; i++){
+        int num; cin >> num;
+        if (num) res = 1;
+    }
+
+    cout << (res ? "HARD" : "EASY");
 }
 
 int32_t main(){
     ios::sync_with_stdio(false), cin.tie(nullptr);
-    int t;
-    cin >> t;
-    while (t--){
-        solve();
-    }
+    solve();
 
     return 0;
 }

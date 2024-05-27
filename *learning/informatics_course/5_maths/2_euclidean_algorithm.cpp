@@ -10,6 +10,10 @@ int gcd(int a, int b) {
     return a;
 }
 
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+
 // расширенный алгоритм евклида
 int gcd(int a, int b, int &x, int &y) {
     if (a == 0){
@@ -26,9 +30,6 @@ int gcd(int a, int b, int &x, int &y) {
     return d;
 }
 
-int lcm(int a, int b) {
-    return (a * b) / gcd(a, b);
-}
 
 int main(){
     cout << gcd(11, 121) << endl;
