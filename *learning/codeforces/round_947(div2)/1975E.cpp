@@ -17,13 +17,16 @@ const int INF = 1e9;
 void dfs(vector<vi> &graph, int v, vi& visited, vi& c, int &cnt){
     cnt++;
     visited[v] = 1;
-    int z = 0;
+
+    int neighbours = 0;
     for (int to : graph[v]){
-        if (!visited[to] && c[to] && z < 1){
+        if (c[to]) neighbours++;
+        if (!visited[to] && c[to]){
             dfs(graph, to, visited, c, cnt);
-            z++;
         }
     }
+
+    if (neighbours > 2) cnt = -100000;
 }
 
 int32_t main(){
@@ -67,8 +70,8 @@ int32_t main(){
                         dfs(graph, i, visited, c, cnt);
                         if (cnt == expect) {
                             ans = true;
-                            break;
                         }
+                        break;
                     }
                 }
                 cout << (ans ? "Yes\n" : "No\n");

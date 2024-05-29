@@ -13,7 +13,14 @@ typedef pair<int, int> ii;
 const int INF = 1e9;
 
 void solve(){
-    
+    int n; cin >> n;
+    vi a(n);
+    for (int i = 0; i < n; ++i) cin >> a[i];
+
+    for (int i = 0; i < n; ++i){
+        cout << n - a[i] + 1 << ' ';
+    }
+    cout << '\n';
 }
 
 int32_t main(){

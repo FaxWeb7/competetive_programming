@@ -1,0 +1,2 @@
+Competitive Programmer’s Handbook - https://cses.fi/book/book.pdf
+A Way to Practice Competitive Programming (from rating 100 to 2400) - https://drive.google.com/file/d/1J2x8pIYQ3MXANgvzOgBciWd3d79j_Exa/view

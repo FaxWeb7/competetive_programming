@@ -13,16 +13,17 @@ typedef pair<int, int> ii;
 const int INF = 1e9;
 
 void solve(){
-    
+    int k, n, w;
+    cin >> k >> n >> w;
+
+    int sum = ((2*k + k*(w-1)) * w) / 2;
+
+    cout << (sum > n ? sum - n : 0);
 }
 
 int32_t main(){
     ios::sync_with_stdio(false), cin.tie(nullptr);
-    int t;
-    cin >> t;
-    while (t--){
-        solve();
-    }
+    solve();
 
     return 0;
 }
