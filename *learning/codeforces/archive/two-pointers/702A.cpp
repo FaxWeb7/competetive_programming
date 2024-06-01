@@ -1,6 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 typedef long long ll;
@@ -17,28 +17,24 @@ void solve(){
     vi a(n);
     for (int i = 0; i < n; ++i) cin >> a[i];
 
-    sort(all(a));
+    int ans = 1;
+    int r = 0;
+    for (int l = 0; l < n; ++l){
+        while (r < n-1 && a[r+1] > a[r]) {
+            r++;
+        }
 
-    int i = 0;
-    while (i < n && a[0] == a[i]) ++i;
-
-    if (i == n) cout << "-1\n";
-    else{
-        cout << i << ' ' << n - i << '\n';
-        for (int j = 0; j < i; ++j) cout << a[j] << " ";
-        cout << '\n';
-        for (int j = i; j < n; ++j) cout << a[j] << " ";
-        cout << '\n';
+        ans = max(ans, r-l+1);
+        l = r;
+        r++;
     }
+
+    cout << ans;
 }
 
 int32_t main(){
     ios::sync_with_stdio(false), cin.tie(nullptr);
-    int t;
-    cin >> t;
-    while (t--){
-        solve();
-    }
+    solve();
 
     return 0;
 }

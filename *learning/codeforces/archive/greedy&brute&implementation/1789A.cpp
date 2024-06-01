@@ -1,6 +1,7 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <vector>
+#include <numeric>
 
 using namespace std;
 typedef long long ll;
@@ -17,19 +18,15 @@ void solve(){
     vi a(n);
     for (int i = 0; i < n; ++i) cin >> a[i];
 
-    sort(all(a));
-
-    int i = 0;
-    while (i < n && a[0] == a[i]) ++i;
-
-    if (i == n) cout << "-1\n";
-    else{
-        cout << i << ' ' << n - i << '\n';
-        for (int j = 0; j < i; ++j) cout << a[j] << " ";
-        cout << '\n';
-        for (int j = i; j < n; ++j) cout << a[j] << " ";
-        cout << '\n';
+    int minGcd = gcd(a[0], a[1]);
+    for (int i = 0; i < n-1; ++i){
+        for (int j = i+1; j < n; ++j){
+            minGcd = min(minGcd, gcd(a[i], a[j]));
+        }
     }
+
+    if (minGcd <= 2) cout << "Yes\n";
+    else cout << "No\n";
 }
 
 int32_t main(){

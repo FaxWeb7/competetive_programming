@@ -1,6 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 typedef long long ll;
@@ -13,23 +13,16 @@ typedef pair<int, int> ii;
 const int INF = 1e9;
 
 void solve(){
-    int n; cin >> n;
-    vi a(n);
-    for (int i = 0; i < n; ++i) cin >> a[i];
+    int a, b, n; cin >> a >> b >> n;
 
-    sort(all(a));
-
-    int i = 0;
-    while (i < n && a[0] == a[i]) ++i;
-
-    if (i == n) cout << "-1\n";
-    else{
-        cout << i << ' ' << n - i << '\n';
-        for (int j = 0; j < i; ++j) cout << a[j] << " ";
-        cout << '\n';
-        for (int j = i; j < n; ++j) cout << a[j] << " ";
-        cout << '\n';
+    int res = 0;
+    while (a <= n && b <= n) {
+        if (a > b) b += a;
+        else a += b;
+        res++;
     }
+
+    cout << res << '\n';
 }
 
 int32_t main(){
