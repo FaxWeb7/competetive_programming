@@ -21,51 +21,36 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-    if (!list1 && !list2) return nullptr;
 
-    ListNode* res = new ListNode();
-    if (list1 && list2) {
-        if (list1->val < list2->val){
-            res->val = list1->val;
-            list1 = list1->next;
-        } else {
-            res->val = list2->val;
-            list2 = list2->next;
+class Solution {
+    int getDepth(ListNode* head){
+        if (!head) return 0;
+        int depth = 1;
+        while (head->next){
+            head = head->next;
+            depth++;
         }
-    }
-    else if (list1) {
-        res->val = list1->val;
-        list1 = list1->next;
-    }
-    else if (list2) {
-        res->val = list2->val;
-        list2 = list2->next;
+        return depth;
     }
 
-    res->next = mergeTwoLists(list1, list2);
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        int depth = getDepth(head);
 
-    return res;
-}
+        int curDepth = 1;
+        ListNode* removeItem = head;
+        while (curDepth != depth-n+1) {
+            removeItem = removeItem->next;
+            curDepth++;
+        }
+
+        removeItem = removeItem->next;
+        removeItem->val = -1;
+        return head;
+    }
+};
 
 int main(){
-    ListNode* list1 = new ListNode(1);
-    ListNode* l1n = new ListNode(2);
-    ListNode* l1nn = new ListNode(3);
-    l1n->next = l1nn;
-    list1->next = l1n;
-
-    ListNode* list2 = new ListNode(1);
-    ListNode* l2n = new ListNode(3);
-    ListNode* l2nn = new ListNode(4);
-    l2n->next = l2nn;
-    list2->next = l2n;
-
-    ListNode* res = mergeTwoLists(list1, list2);
-    while (res) {
-        cout << res->val << ' ';
-        res = res->next;
-    }
 
     return 0;
 }
