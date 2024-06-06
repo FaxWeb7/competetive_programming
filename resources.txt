@@ -1,0 +1,4 @@
+Competitive Programmer’s Handbook - https://cses.fi/book/book.pdf
+A Way to Practice Competitive Programming (from rating 100 to 2400) - https://drive.google.com/file/d/1J2x8pIYQ3MXANgvzOgBciWd3d79j_Exa/view
+CP Topics_Resources - https://docs.google.com/presentation/d/1xJ9SAj14kxOLlwiaN4o4IzhvqjZ0MO5JV90hw7TlQCY/edit#slide=id.p
+CP Roadmap Resources - https://www.youtube.com/watch?v=bSdp2WeyuJY (https://docs.google.com/document/d/1-7Co93b504uyXyMjjE8bnLJP3d3QXvp_m1UjvbvdR2Y/edit)

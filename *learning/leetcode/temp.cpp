@@ -51,6 +51,26 @@ public:
 };
 
 int main(){
+    string n1, n2; cin >> n1 >> n2;
+
+    if (n2.size() > n1.size()) swap(n1, n2);
+    reverse(n1.begin(), n1.end());
+    reverse(n2.begin(), n2.end());
+    while (n2.size() != n1.size()) n2 = '0' + n2;
+
+    string n = "";
+    int rem = 0;
+    for (int i = n1.size()-1; i >= 0; --i){
+        int x = (n1[i] - '0') + (n2[i] - '0') + rem;
+        if (x >= 10) {
+            rem = x / 10;
+            x -= (rem * 10);
+        } else rem = 0;
+        n = to_string(x) + n;
+    }
+    // reverse(n.begin(), n.end());
+
+    cout << n;
 
     return 0;
 }
