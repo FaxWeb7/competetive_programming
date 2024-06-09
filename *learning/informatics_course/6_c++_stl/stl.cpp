@@ -9,6 +9,7 @@ int main(){
         max_element(begin, end);
         reverse(begin, end);
         rotate(first, n_first, last); n_first 1 влево переходит, n_first-1 на 2 влево либоа на последний
+        rotate(v.begin(), v.begin() + 1, v.end()) - сдвиг влево
 
         слить два вектора:
         vector<int> res;
