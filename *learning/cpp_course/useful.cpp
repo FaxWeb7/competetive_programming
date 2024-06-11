@@ -52,6 +52,7 @@ int main(){
 
     double const PI = 3.14159;
     cout << fixed << setprecision(4) << PI << endl; // fixed - отсчет чисел без целой части, setprecision(x) - округлить до x знаков после запятой
+    cout << setfill('0') << setw(2) << 5; //добавление ведущих нулей если длина последующего числа меньше 2
 
     cout << 0b111111 << endl; // двоичная сс
     cout << 01234567 << endl; // 8-ричная сс
