@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <stack>
+#include <queue>
 
 using namespace std;
 typedef long long ll;
@@ -22,31 +23,40 @@ struct ListNode {
 };
 
 
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 class Solution {
-    int getDepth(ListNode* head){
-        if (!head) return 0;
-        int depth = 1;
-        while (head->next){
-            head = head->next;
-            depth++;
-        }
-        return depth;
-    }
-
 public:
-    ListNode* removeNthFromEnd(ListNode* head, int n) {
-        int depth = getDepth(head);
+    vector<vector<int>> levelOrder(ListNode* root) {
+        vector<vector<int>> res;
+        
+        queue<ListNode*> q;
+        q.push(root);
+        while (!q.empty()){
+            vector<int> vec;
+            int cnt = q.size();
+            for (int i = 0; i < cnt; ++i)
+                ListNode* v = q.front();
+                q.pop();
 
-        int curDepth = 1;
-        ListNode* removeItem = head;
-        while (curDepth != depth-n+1) {
-            removeItem = removeItem->next;
-            curDepth++;
+                vec.push_back(v->val);
+                if (v->left) q.push(v->left);
+                if (v->right) q.push(v->right);
+            }
+
+            res.push_back(vec);
         }
 
-        removeItem = removeItem->next;
-        removeItem->val = -1;
-        return head;
+        return res;
     }
 };
 

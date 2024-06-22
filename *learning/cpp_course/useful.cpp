@@ -11,7 +11,7 @@ using namespace std;
 typedef long long ll;
 typedef vector<int> vi;
 typedef vector<ll> vll;
-typedef pair<int, int> pi;
+typedef pair<int, int> pii;
 
 //полезные define
 #define watch(x) cout << (#x) << " is " << (x) << '\n'
@@ -64,6 +64,9 @@ int main(){
 
     string age = "16";
     cout << stoi(age) << endl; //строка в число 
+
+    //reversed priority_queue
+    //priority_queue<int, vector<int>, greater<int>> q;
 
     // лямбда функции
     // лямбда функцию необязательно называть. в квадратных скобках указываются ссылки на используемые переменные из внешнего контекста

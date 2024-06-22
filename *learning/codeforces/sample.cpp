@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
+#include <cmath>
 #include <vector>
-#include <map>
 
 using namespace std;
 typedef long long ll;
@@ -10,14 +10,15 @@ typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int, int> pii;
 #define all(x) x.begin(), x.end()
-#define rall(x) x.rbegin(), x.rend()
+#define pb push_back
 #define MP make_pair
 #define F first
 #define S second
-const int INF = 1e9 + 6;
+const double EPS = 1e-10;
+const int INF = 1e9 + 7;
 
 void solve(){
-
+    
 }
 
 int32_t main(){

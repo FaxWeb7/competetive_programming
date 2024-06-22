@@ -19,11 +19,9 @@ const int INF = 1e9 + 6;
 void solve(){
     int n; cin >> n;
 
-    if (n % 2) {
-        cout << 1 << '\n';
-    } else {
-
-    }
+    int ans = 1;
+    while (n % ans == 0) ans++;
+    cout << ans-1 << '\n';
 }
 
 int32_t main(){
