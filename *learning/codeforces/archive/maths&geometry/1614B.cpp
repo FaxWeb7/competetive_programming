@@ -2,10 +2,11 @@
 #include <algorithm>
 #include <cmath>
 #include <vector>
+#include <queue>
 
 using namespace std;
 typedef long long ll;
-// #define int ll
+#define int ll
 typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int, int> pii;
@@ -17,46 +18,40 @@ typedef pair<int, int> pii;
 const double EPS = 1e-10;
 const int INF = 1e9 + 7;
 
-/*
-
-1 -> 3
-2 -> 1
-3 -> 1
-
-*/
-
 void solve(){
-    int n, k; cin >> n >> k;
-    vi a(k+1);
+    int n; cin >> n;
+    priority_queue<pii> pq;
+    vi a(n);
     for (int i = 0; i < n; ++i) {
         int x; cin >> x;
-        a[x]++;
+        pq.push({ x, i });
     }
 
-    int boxes = (n+1) / 2;
     int res = 0;
-    for (int i = 1; i <= k; ++i){
-        if (boxes <= 0) break;
+    bool q = true;
+    int cnt = 2;
+    while (!pq.empty()){
+        pii p = pq.top();
+        pq.pop();
 
-        res += min((a[i]/2)*2, boxes*2);
-        boxes -= a[i]/2;
-        a[i] %= 2;
+        int val = (q ? cnt/2 : -cnt/2);
+        res += 2*abs(val)*p.F;
+        a[p.S] = val;
+        cnt++, q = !q;
     }
 
-    for (int i = 1; i <= k; ++i){
-        if (boxes <= 0) break;
-        if (a[i] == 0) continue;
-
-        res++;
-        boxes--;
-    }
-
-    cout << res << '\n';
+    cout << res << "\n0 ";
+    for (int &x : a) cout << x << ' ';
+    cout << '\n';
 }
 
 int32_t main(){
     ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-    solve();
+    int t;
+    cin >> t;
+    while (t--){
+        solve();
+    }
 
     return 0;
 }
