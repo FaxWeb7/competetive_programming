@@ -10,6 +10,7 @@ typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int, int> pii;
 #define all(x) x.begin(), x.end()
+#define sz(x) (int)x.size()
 #define pb push_back
 #define MP make_pair
 #define F first
@@ -30,6 +31,10 @@ int32_t main(){
     }
 
     return 0;
+}
+
+int64_t ceil_div(int64_t a, int64_t b) {
+    return (a + (b - 1)) / b;
 }
 
 // use this to stop getting hacked when using unordered_map/unordered_set

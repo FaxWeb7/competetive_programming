@@ -19,7 +19,7 @@ const int INF = 1e9 + 7;
 
 void solve(){
     int k, x; cin >> k >> x;
-    cout << (k-1)*9 + x << '\n';
+    cout << x + 9 * (k-1) << '\n';
 }
 
 int32_t main(){

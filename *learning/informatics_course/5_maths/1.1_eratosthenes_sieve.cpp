@@ -4,6 +4,9 @@
 using namespace std;
 
 int main(){
+    uint32_t h = 0;
+    h <<= 31;
+    cout << h;
     int n = 50;
 
     vector<bool> isPrime(n, true);

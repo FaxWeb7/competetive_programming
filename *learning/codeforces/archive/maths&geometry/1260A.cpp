@@ -5,7 +5,7 @@
 
 using namespace std;
 typedef long long ll;
-// #define int ll
+#define int ll
 typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int, int> pii;
@@ -20,7 +20,25 @@ const int INF = 1e9 + 7;
 void solve(){
     int c, sum; cin >> c >> sum;
 
-    cout << c * (ceil((double)sum / c)) << '\n';
+    if (c >= sum) cout << sum << '\n';
+    else if (c == 1) cout << sum*sum << '\n';
+    else {
+        vi a(c, 1);
+
+        int cost = c, curSum = c;
+        int k = c-1;
+        while (curSum < sum) {
+            curSum++;
+            cost -= a[k]*a[k];
+            a[k]++;
+            cost += a[k]*a[k];
+
+            k--;
+            if (k == -1) k = c-1;
+        }
+
+        cout << cost << '\n';
+    }
 }
 
 int32_t main(){
