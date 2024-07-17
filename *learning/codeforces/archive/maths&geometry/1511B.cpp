@@ -20,7 +20,14 @@ const int INF = 1e9 + 7;
 
 void solve(){
     int a, b, c; cin >> a >> b >> c;
-    
+
+    string x = "1";
+    for (int i = 0; i < a-1; ++i) x += "0";
+    string y = "";
+    for (int i = 0; i < b-(c-1); ++i) y += "1";
+    for (int i = 0; i < c-1; ++i) y += "0";
+
+    cout << x << ' ' << y << '\n';
 }
 
 int32_t main(){

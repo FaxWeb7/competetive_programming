@@ -1,1 +1,3 @@
-if (mp.find(a[i]) != mp.end()) mp.erase(mp.find(a[i]));
+(int j = i*i; j < 10000001; j += i){
+            isPrime[j] = 0;
+        }

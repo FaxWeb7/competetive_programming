@@ -14,14 +14,34 @@ typedef vector<int> vi;
 typedef pair<string, int> si;
 
 
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+class KthLargest {
+    priority_queue<int, vector<int>, greater<int>> pq;
+    int kth;
+public:
+    KthLargest(int k, vector<int>& nums) {
+        int n = nums.size();
+        sort(nums.begin(), nums.end());
+        for (int i = n-1; i > n-1-k; --i) {
+            pq.push(nums[i]);
+            if (i == n-k) kth = nums[i];
+        }
+    }
+    
+    int add(int val) {
+        if (val > kth) {
+            pq.pop();
+            pq.push(val);
+            kth = pq.top();
+        }
+        return kth;
+    }
 };
 
+/**
+ * Your KthLargest object will be instantiated and called as such:
+ * KthLargest* obj = new KthLargest(k, nums);
+ * int param_1 = obj->add(val);
+ */
 
 /**
  * Definition for a binary tree node.

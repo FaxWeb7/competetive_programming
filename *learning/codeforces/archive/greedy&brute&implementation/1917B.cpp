@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <cmath>
 #include <vector>
-#include <unordered_map>
+#include <set>
 
 using namespace std;
 typedef long long ll;
@@ -22,6 +22,13 @@ const int INF = 1e9 + 7;
 void solve(){
     int n; cin >> n;
     string s; cin >> s;
+    set<char> st;
+    int ans = 0;
+    for (char &ch : s) {
+        st.insert(ch);
+        ans += st.size();
+    }
+    cout << ans << '\n';
 }
 
 int32_t main(){

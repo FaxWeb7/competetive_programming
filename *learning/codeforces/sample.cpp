@@ -16,7 +16,8 @@ typedef pair<int, int> pii;
 #define F first
 #define S second
 const double EPS = 1e-10;
-const int INF = 1e9 + 7;
+const int INF = 2e9 + 1;
+const int MOD = 1e9 + 7;
 
 void solve(){
     
@@ -35,6 +36,10 @@ int32_t main(){
 
 int64_t ceil_div(int64_t a, int64_t b) {
     return (a + (b - 1)) / b;
+}
+
+int64_t ap(int a1, int an){
+    return ((a1 + an) * (an - a1 + 1)) / 2;
 }
 
 // use this to stop getting hacked when using unordered_map/unordered_set
