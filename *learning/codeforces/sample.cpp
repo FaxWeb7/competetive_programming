@@ -20,7 +20,6 @@ const int INF = 2e9 + 1;
 const int MOD = 1e9 + 7;
 
 void solve(){
-    
 }
 
 int32_t main(){

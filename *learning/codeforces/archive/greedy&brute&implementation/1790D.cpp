@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <cmath>
 #include <vector>
-#include <set>
+#include <map>
 
 using namespace std;
 typedef long long ll;
@@ -17,18 +17,34 @@ typedef pair<int, int> pii;
 #define F first
 #define S second
 const double EPS = 1e-10;
-const int INF = 1e9 + 7;
-
-int ceil_div(int a, int b){
-    return (a + b - 1) / b;
-}
+const int INF = 2e9 + 1;
+const int MOD = 1e9 + 7;
 
 void solve(){
-    int n, m, k; cin >> n >> m >> k;
-    
-    int mx = min(m, n/k);
-    int mn = ceil_div(m-mx, k-1);
-    cout << max(mx - mn, 0) << '\n';
+    int n; cin >> n;
+    map<int, int> mp;
+    for (int i = 0; i < n; ++i) {
+        int x; cin >> x;
+        mp[x]++;
+    }
+
+    int ans = 0;
+    while(mp.size()){
+        if (!mp.begin()->S) {
+            mp.erase(mp.begin());
+            continue;
+        }
+
+        mp.begin()->S--;
+        int prev = mp.begin()->F;
+        while (mp[prev+1]) {
+            mp[++prev]--;
+        }
+
+        ans++;
+    }
+
+    cout << ans << '\n';
 }
 
 int32_t main(){

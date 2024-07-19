@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <cmath>
 #include <vector>
-#include <set>
 
 using namespace std;
 typedef long long ll;
@@ -17,18 +16,20 @@ typedef pair<int, int> pii;
 #define F first
 #define S second
 const double EPS = 1e-10;
-const int INF = 1e9 + 7;
-
-int ceil_div(int a, int b){
-    return (a + b - 1) / b;
-}
+const int INF = 2e9 + 1;
+const int MOD = 1e9 + 7;
 
 void solve(){
-    int n, m, k; cin >> n >> m >> k;
-    
-    int mx = min(m, n/k);
-    int mn = ceil_div(m-mx, k-1);
-    cout << max(mx - mn, 0) << '\n';
+    int n; cin >> n;
+    string s, t; cin >> s >> t;
+    if (s[0] == '1') {cout << "YES\n"; return;}
+
+    int firstOcc = 1;
+    while (firstOcc < n && s[firstOcc] != '1') firstOcc++;
+    int firstNonMatch = 0;
+    while (firstNonMatch < n && s[firstNonMatch] == t[firstNonMatch]) firstNonMatch++;
+
+    cout << (firstNonMatch >= firstOcc ? "YES\n" : "NO\n");
 }
 
 int32_t main(){
