@@ -23,16 +23,43 @@ void solve(){
     int n; cin >> n;
     string s; cin >> s;
     int x, y; cin >> x >> y;
+    if (n < abs(x) + abs(y) || (n - abs(x) - abs(y)) % 2) {cout << "-1\n"; return;}
 
-    int fx = 0, fy = 0;
-    for (char &ch : s){
-        if (ch == 'U') fy++;
-        else if (ch == 'D') fy--;
-        else if (ch == 'L') x--;
-        else x++;
+    vector<pii> pref(n+1);
+    pref[0] = {0, 0};
+
+    int tx = 0, ty = 0;
+    for (int i = 0; i < n; ++i){
+        pref[i+1] = pref[i];
+        if (s[i] == 'U') pref[i+1].S++;
+        else if (s[i] == 'D') pref[i+1].S--;
+        else if (s[i] == 'L') pref[i+1].F--;
+        else if (s[i] == 'R') pref[i+1].F++;
     }
-    
-    if (abs(fx) < abs(x) && abs(fy) < abs(y)) {cout << -1; return;}
+
+    auto check = [&](int mid){
+        for (int l = 0; l <= n-mid; ++l){
+            int nx = pref[n].F - (pref[l+mid].F - pref[l].F);
+            int ny = pref[n].S - (pref[l+mid].S - pref[l].S);
+
+            int temp = mid;
+            if (nx > x || nx < x) temp -= abs(nx-x);
+            if (ny > y || ny < y) temp -= abs(ny-y);
+
+            if (temp >= 0 && temp % 2 == 0) return true;
+        }
+
+        return false;
+    };
+
+    int l = 0, r = n;
+    while (l < r){
+        int mid = l + (r - l) / 2;
+        if (check(mid)) r = mid;
+        else l = mid+1;
+    }
+
+    cout << l << '\n';
 }
 
 int32_t main(){

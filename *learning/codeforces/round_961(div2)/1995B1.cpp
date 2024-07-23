@@ -23,35 +23,33 @@ void solve(){
     int n, m; cin >> n >> m;
     vi a(n);
     for (int &x : a) cin >> x;
+    sort(all(a));
 
-    auto check = [&](int mid){
-        vi b = a;
-        if (b[0]+mid >= m) b[0] = 0;
-        
-        for (int i = 1; i < n; ++i){
-            if (b[i] > b[i-1]) {
-                if (mid >= (m - b[i]) + b[i-1]) b[i] = b[i-1];
-            } else if (b[i] < b[i-1]){
-                if (mid >= b[i-1] - b[i]) b[i] = b[i-1];
-            }
+    int maxLen = 0, curLen = a[0];
+    for (int l = 0, r = 0; l < n; ++l){
+        while (r+1 < n && a[r+1]-a[l] <= 1 && curLen + a[r+1] <= m){
+            curLen += a[++r];
         }
 
-        return is_sorted(all(b));
-    };
-
-    int l = 0, r = m+10;
-    while (l < r){
-        int mid = l + (r - l) / 2;
-        if (check(mid)) r = mid;
-        else l = mid + 1;
+        if (curLen <= m){
+            maxLen = max(maxLen, curLen);
+        }
+        curLen -= a[l];
+        if (l == r){
+            curLen += a[++r];
+        }
     }
 
-    cout << l << '\n';
+    cout << maxLen << '\n';
 }
 
 int32_t main(){
     ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-    solve();
+    int t;
+    cin >> t;
+    while (t--){
+        solve();
+    }
 
     return 0;
 }
