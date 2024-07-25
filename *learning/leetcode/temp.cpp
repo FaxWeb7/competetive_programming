@@ -37,48 +37,6 @@ public:
     }
 };
 
-/**
- * Your KthLargest object will be instantiated and called as such:
- * KthLargest* obj = new KthLargest(k, nums);
- * int param_1 = obj->add(val);
- */
-
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-class Solution {
-public:
-    vector<vector<int>> levelOrder(ListNode* root) {
-        vector<vector<int>> res;
-        
-        queue<ListNode*> q;
-        q.push(root);
-        while (!q.empty()){
-            vector<int> vec;
-            int cnt = q.size();
-            for (int i = 0; i < cnt; ++i)
-                ListNode* v = q.front();
-                q.pop();
-
-                vec.push_back(v->val);
-                if (v->left) q.push(v->left);
-                if (v->right) q.push(v->right);
-            }
-
-            res.push_back(vec);
-        }
-
-        return res;
-    }
-};
 
 int main(){
     string n1, n2; cin >> n1 >> n2;

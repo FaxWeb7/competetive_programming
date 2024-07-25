@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-int main(){
+int test(){
     // begin(arr) == arr.begin(); end(arr) == arr.end(); next(arr) == arr.next(); prev(arr) == arr.prev()
     //vector - динамический массив
     vector<int> v1 {1,2,3}; // {1, 2, 3}
@@ -51,4 +51,6 @@ int main(){
     debug(l2);
     debug(l3);
     debug(s1);
+
+    return 0;
 }
