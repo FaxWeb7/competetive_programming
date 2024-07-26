@@ -21,15 +21,7 @@ const int MOD = 1e9 + 7;
 
 void solve(){
     int n; cin >> n;
-    vi a(n);
-    for (int &x : a) cin >> x;
-
-    if (is_sorted(all(a))) {cout << "0\n"; return;}
-    if (a[n-2] > a[n-1] || (a[n-2] < 0 && a[n-1] < 0)) {cout << "-1\n"; return;}
-    cout << n-2 << '\n';
-    for (int i = 0; i < n-2; ++i){
-        cout << i+1 << ' ' << n-1 << ' ' << n << '\n';
-    }
+    cout << (n+3) / 4 << '\n';
 }
 
 int32_t main(){

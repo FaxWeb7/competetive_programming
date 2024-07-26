@@ -5,7 +5,7 @@
 
 using namespace std;
 typedef long long ll;
-// #define int ll
+#define int ll
 typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int, int> pii;
@@ -20,16 +20,17 @@ const int INF = 2e9 + 1;
 const int MOD = 1e9 + 7;
 
 void solve(){
-    int n; cin >> n;
-    vi a(n);
-    for (int &x : a) cin >> x;
+    int n, x; cin >> n >> x;
 
-    if (is_sorted(all(a))) {cout << "0\n"; return;}
-    if (a[n-2] > a[n-1] || (a[n-2] < 0 && a[n-1] < 0)) {cout << "-1\n"; return;}
-    cout << n-2 << '\n';
-    for (int i = 0; i < n-2; ++i){
-        cout << i+1 << ' ' << n-1 << ' ' << n << '\n';
+    int ans = 0;
+    for (int a = 1; a <= n; ++a){
+        for (int b = 1; b * a <= n; ++b){
+            int up = min(x - a - b, (n - a*b) / (a + b));
+            if (up >= 1) ans += up;
+        }
     }
+
+    cout << ans << '\n';
 }
 
 int32_t main(){
