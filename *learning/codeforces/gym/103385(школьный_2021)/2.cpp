@@ -5,7 +5,7 @@
 
 using namespace std;
 typedef long long ll;
-#define int ll
+// #define int ll
 typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int, int> pii;
@@ -17,29 +17,23 @@ typedef pair<int, int> pii;
 #define S second
 const double EPS = 1e-10;
 const int INF = 2e9 + 1;
-const int N = 5200000;
 const int MOD = 1e9 + 7;
 
+void solve(){
+    int n1, n2; cin >> n1 >> n2;
+    
+    if (n2 % 2 == 0){
+        if (n1 % 2 == 1) cout << "No";
+        else cout << "Yes\n" << n1/2 << ' ' << n2/2;
+    } else if (n2 % 2 == 1) {
+        if (n1 % 2 == 0 && n1 >= 2) cout << "Yes\n" << 2 + (n1-2)/2 << ' ' << n2/2;
+        else cout << "No";
+    }
+}
 
 int32_t main(){
     ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-    vi factors(N);
-    for (int i = 2; i <= 5000000; ++i){
-        if (factors[i]) continue;
-        for (int j = i; j <= 5000000; j += i){
-            factors[j] = factors[j / i] + 1;
-        }
-    }
-
-    for (int i = 2; i <= 5000000; ++i){
-        factors[i] += factors[i-1];
-    }
-
-    int t; cin >> t;
-    while (t--){
-        int a, b; cin >> a >> b;
-        cout << factors[a]-factors[b] << '\n';
-    }
+    solve();
 
     return 0;
 }

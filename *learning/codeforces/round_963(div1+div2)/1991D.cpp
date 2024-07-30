@@ -17,28 +17,17 @@ typedef pair<int, int> pii;
 #define S second
 const double EPS = 1e-10;
 const int INF = 2e9 + 1;
-const int N = 5200000;
 const int MOD = 1e9 + 7;
 
+void solve(){
+}
 
 int32_t main(){
     ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-    vi factors(N);
-    for (int i = 2; i <= 5000000; ++i){
-        if (factors[i]) continue;
-        for (int j = i; j <= 5000000; j += i){
-            factors[j] = factors[j / i] + 1;
-        }
-    }
-
-    for (int i = 2; i <= 5000000; ++i){
-        factors[i] += factors[i-1];
-    }
-
-    int t; cin >> t;
+    int t;
+    cin >> t;
     while (t--){
-        int a, b; cin >> a >> b;
-        cout << factors[a]-factors[b] << '\n';
+        solve();
     }
 
     return 0;
