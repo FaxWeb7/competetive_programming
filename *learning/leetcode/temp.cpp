@@ -14,51 +14,36 @@ typedef vector<int> vi;
 typedef pair<string, int> si;
 
 
-class KthLargest {
-    priority_queue<int, vector<int>, greater<int>> pq;
-    int kth;
+class Solution {
 public:
-    KthLargest(int k, vector<int>& nums) {
-        int n = nums.size();
-        sort(nums.begin(), nums.end());
-        for (int i = n-1; i > n-1-k; --i) {
-            pq.push(nums[i]);
-            if (i == n-k) kth = nums[i];
-        }
+    void dfs(vector<vector<int>> &visited, int n, int m, int i, int j){
+        visited[i][j] = 1;
+        if (i+1 < n) dfs(visited, n, m, i+1, j);
+        if (i-1 >= 0) dfs(visited, n, m, i-1, j);
+        if (j+1 < m) dfs(visited, n, m, i, j+1);
+        if (j-1 >= 0) dfs(visited, n, m, i, j-1);
     }
-    
-    int add(int val) {
-        if (val > kth) {
-            pq.pop();
-            pq.push(val);
-            kth = pq.top();
+
+    int numIslands(vector<vector<char>>& g) {
+        int n = g.size(), m = g[0].size();
+
+        int ans = 0;
+        vector<vector<int>> visited(n, vector<int>(m));
+        for (int i = 0; i < n; ++i){
+            for (int j = 0; j < m; ++j){
+                if (g[i][j] == '1' && !visited[i][j]){
+                    dfs(visited, n, m, i, j);
+                    ans++;
+                }
+            }
         }
-        return kth;
+
+        return ans;
     }
 };
 
-
 int main(){
-    string n1, n2; cin >> n1 >> n2;
-
-    if (n2.size() > n1.size()) swap(n1, n2);
-    reverse(n1.begin(), n1.end());
-    reverse(n2.begin(), n2.end());
-    while (n2.size() != n1.size()) n2 = '0' + n2;
-
-    string n = "";
-    int rem = 0;
-    for (int i = n1.size()-1; i >= 0; --i){
-        int x = (n1[i] - '0') + (n2[i] - '0') + rem;
-        if (x >= 10) {
-            rem = x / 10;
-            x -= (rem * 10);
-        } else rem = 0;
-        n = to_string(x) + n;
-    }
-    // reverse(n.begin(), n.end());
-
-    cout << n;
+    Solution sol = Solution();
 
     return 0;
 }

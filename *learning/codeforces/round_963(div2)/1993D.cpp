@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <cmath>
 #include <vector>
-#include <stack>
 
 using namespace std;
 typedef long long ll;
@@ -17,37 +16,46 @@ typedef pair<int, int> pii;
 #define F first
 #define S second
 const double EPS = 1e-10;
-const int INF = 2e15 + 1;
+const int INF = 2e9 + 1;
 const int MOD = 1e9 + 7;
 
-bool dfs(vector<vi> &g, vi& a, int v, int mid){
-    if (!g[v].size() && a[v] < mid) return false;
-
-    if (!v) mid = max(0ll, mid - a[v]);
-    else if (a[v] < mid) mid = min(INF, mid + mid - a[v]);
-
-    for (int &to : g[v]){
-        if (!dfs(g, a, to, mid)) return false;
-    }
-
-    return true;
-}
 
 void solve(){
-    int n; cin >> n;
+    int n, k; cin >> n >> k;
     vi a(n);
+    vi b(n), dp(n);
     for (int &x : a) cin >> x;
-    
-    vvi g(n);
-    for (int i = 0; i < n-1; ++i){
-        int pi; cin >> pi;
-        g[pi-1].pb(i+1);
+    if (k >= n) {
+        sort(all(a));
+        cout << a[(n+1)/2-1] << '\n';
+        return;
     }
+    
+    auto check = [&](int mid){
+        for (int i = 0; i < n; ++i){
+            if (a[i] >= mid) b[i] = 1;
+            else b[i] = -1;
+        }
 
-    int l = 0, r = INF;
+        dp[0] = b[0];
+        for (int i = 1; i < n; ++i){
+            if (i % k == 0){
+                dp[i] = max(dp[i-k], b[i]);
+            } else {
+                dp[i] = dp[i-1] + b[i];
+                if (i > k){
+                    dp[i] = max(dp[i], dp[i-k]);
+                }
+            }
+        }
+
+        return dp[n-1] > 0;
+    };
+
+    int l = 1, r = 1e9;
     while (l < r){
         int mid = l + (r - l + 1) / 2;
-        if (dfs(g, a, 0, mid)) l = mid;
+        if (check(mid)) l = mid;
         else r = mid - 1;
     }
 

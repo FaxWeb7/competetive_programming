@@ -1,49 +1,28 @@
 from sys import stdin, stdout
 
 n = int(stdin.readline())
-file_list = []
+files = []
 for _ in range(n):
-    file_list.append(stdin.readline().split('\n')[0])
+    files.append(stdin.readline().split('\n')[0])
 
-dwlded_files = []
-for file in file_list:
-    if file not in dwlded_files:
-        dwlded_files.append(file)
+res = {} # {file: #}
+for file in files:
+    if file not in res:
+        res[file] = [file]
     else:
-        split_file = file.split('.')
-        if len(split_file) == 2:
-            dwlded_files.append(split_file[0] + f'({file_list.count(file)-1}).' + split_file[1])
-        else:
-            dwlded_files.append(f'{file}({file_list.count(file)-1})')
+        res[file].append(file)
 
-for item in sorted(dwlded_files):
-    stdout.write(item + "\n")
+ans = []
+for arr in sorted(res.values()):
+    arr = sorted(arr)
+    ans.append(arr[0])
+    for i in range(1, len(arr)):
+        filename = arr[i].split('.')[0]
+        ext = ''
+        if (len(arr[i].split('.')) == 2): ext = arr[i].split('.')[1]
+        newfile = f'{filename}({i})'
+        if (ext != ''): newfile += f'.{ext}'
+        ans.append(newfile)
 
-
-
-
-# from sys import stdin, stdout
-
-# n = int(stdin.readline())
-# file_list = []
-# for _ in range(n):
-#     file_list.append(stdin.readline().split('\n')[0])
-
-# dwlded_files = []
-# for file in file_list:
-#     if file not in dwlded_files:
-#         dwlded_files.append(file)
-#     else:
-#         split_file = file.split('.')
-#         counter = []
-#         for el in dwlded_files:
-#             try:
-#                 counter.append(int(el.split(file)[1][1]))
-#             except: pass
-#         if len(split_file) == 2:
-#             dwlded_files.append(split_file[0] + f'({max(counter) + 1 if counter != [] else 1}).' + split_file[1])
-#         else:
-#             dwlded_files.append(f'{file}({max(counter) + 1 if counter != [] else 1})')
-
-# for item in sorted(dwlded_files):
-#     stdout.write(item + "\n")
+for file in sorted(ans):
+    print(file)
