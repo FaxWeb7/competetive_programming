@@ -20,7 +20,7 @@ const int INF = 2e9 + 1;
 const int MOD = 1e9 + 7;
 
 void solve(){
-    
+
 }
 
 int32_t main(){
@@ -34,11 +34,11 @@ int32_t main(){
     return 0;
 }
 
-int64_t ceil_div(int64_t a, int64_t b) {
+int ceil_div(int a, int b) {
     return (a + (b - 1)) / b;
 }
 
-int64_t ap(int64_t a1, int64_t an, int64_t n){
+int ap(int a1, int an, int n){
     return ((a1 + an) * n) / 2;
 }
 
